@@ -30,4 +30,8 @@
     <string name="button_add">追加</string>
     <string name="button_back">戻る</string>
     <string name="button_save">保存</string>
+
+    <!-- 設定 -->
+    <string name="shared_prefference">BookManagerPreferences</string>
+    <string name="entry_flg">EntryFlg</string>
 </resources>

@@ -16,9 +16,13 @@
         <activity android:name=".presentation.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".presentation.MainActivity"></activity>
+        <activity android:name=".presentation.MainActivity" />
+        <activity android:name=".presentation.AccountSettingActivity" />
+        <activity android:name=".presentation.LoginActivity"></activity>
     </application>
+
 </manifest>

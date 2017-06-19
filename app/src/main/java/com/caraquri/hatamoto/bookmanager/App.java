@@ -3,7 +3,6 @@ package com.caraquri.hatamoto.bookmanager;
 import android.app.Application;
 import android.content.Context;
 
-
 import com.caraquri.hatamoto.bookmanager.di.component.AppComponent;
 import com.caraquri.hatamoto.bookmanager.di.component.DaggerAppComponent;
 import com.caraquri.hatamoto.bookmanager.di.module.AppModule;
