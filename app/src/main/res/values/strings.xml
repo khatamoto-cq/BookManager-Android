@@ -1,3 +1,33 @@
 <resources>
-    <string name="app_name">BookManager-Android</string>
+    <!-- アプリ名 -->
+    <string name="app_name">書籍管理アプリ</string>
+
+    <!-- 画面タイトル -->
+    <string name="title_login">ログイン</string>
+    <string name="title_book_list">書籍一覧</string>
+    <string name="title_add_book">書籍追加</string>
+    <string name="title_edit_book">書籍編集</string>
+    <string name="title_setting">設定</string>
+    <string name="title_account_setting">アカウント設定</string>
+
+    <!-- タブ -->
+    <string name="tab_booklist">書籍一覧</string>
+    <string name="tab_setting">設定</string>
+
+    <!-- ラベル -->
+    <string name="label_loading_app">アプリケーションを起動中...</string>
+    <string name="label_email">メールアドレス</string>
+    <string name="label_password">パスワード</string>
+    <string name="label_password_confirm">パスワード確認</string>
+    <string name="label_book_name">書籍名</string>
+    <string name="label_book_price">金額</string>
+    <string name="label_book_purchase_day">購入金額</string>
+
+    <!-- ボタン -->
+    <string name="button_setting_account">アカウント設定</string>
+    <string name="button_attach_image">画像添付ボタン</string>
+    <string name="button_login">ログイン</string>
+    <string name="button_add">追加</string>
+    <string name="button_back">戻る</string>
+    <string name="button_save">保存</string>
 </resources>
