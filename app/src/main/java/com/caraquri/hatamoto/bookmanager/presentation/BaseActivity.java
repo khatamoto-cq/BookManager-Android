@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 
 import com.kaopiz.kprogresshud.KProgressHUD;
@@ -46,4 +47,11 @@ public abstract class BaseActivity extends AppCompatActivity {
             finish();
         }
     }
+
+    protected void showDialog(String title, String message) {
+        new AlertDialog.Builder(this)
+                .setTitle(title)
+                .setMessage(message)
+                .setPositiveButton("OK", null)
+                .show();                                                                                                                }
 }
