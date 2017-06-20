@@ -34,4 +34,12 @@
     <!-- 設定 -->
     <string name="shared_prefference">BookManagerPreferences</string>
     <string name="entry_flg">EntryFlg</string>
+
+    <!-- エラー -->
+    <string name="validation_title">入力エラー</string>
+    <string name="validation_email_require">メールアドレスが入力されていません</string>
+    <string name="validation_email_invalid">メールアドレスを正しい形式で入力してください</string>
+    <string name="validation_password_require">パスワードが入力されていません</string>
+    <string name="validation_password_confirm_require">パスワード(確認用)が入力されていません</string>
+    <string name="validation_password_compare">パスワードとパスワード(確認用)が一致しません</string>
 </resources>
