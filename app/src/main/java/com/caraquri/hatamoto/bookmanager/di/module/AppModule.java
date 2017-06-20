@@ -3,6 +3,7 @@ package com.caraquri.hatamoto.bookmanager.di.module;
 import android.app.Application;
 import android.content.Context;
 
+import com.caraquri.hatamoto.bookmanager.presentation.AccountSettingPresenter;
 import com.caraquri.hatamoto.bookmanager.presentation.SplashPresenter;
 
 import javax.inject.Singleton;
@@ -32,7 +33,12 @@ public class AppModule {
     }
 
     @Provides
-    SplashPresenter provideSplashPresenter(Scheduler scheduler) {
-        return new SplashPresenter(scheduler);
+    SplashPresenter provideSplashPresenter() {
+        return new SplashPresenter();
+    }
+
+    @Provides
+    AccountSettingPresenter provideAccountSettingPresenter(Scheduler scheduler) {
+        return new AccountSettingPresenter(scheduler);
     }
 }
