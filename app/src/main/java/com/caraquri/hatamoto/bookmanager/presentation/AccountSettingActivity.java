@@ -74,7 +74,7 @@ public class AccountSettingActivity extends BaseActivity implements AccountSetti
 
     @Override
     public void moveBookList() {
-        startActivity(BookListActivity.class);
+        startActivity(MainActivity.class);
     }
 
     @Override
@@ -98,7 +98,7 @@ public class AccountSettingActivity extends BaseActivity implements AccountSetti
                 break;
             case R.id.action_save:
                 Toast.makeText(AccountSettingActivity.this, "登録しました", Toast.LENGTH_LONG).show();
-                startActivity(BookListActivity.class);
+                startActivity(MainActivity.class);
         }
 
         return super.onOptionsItemSelected(item);

@@ -30,7 +30,7 @@
             android:label="@string/title_login"
             android:theme="@style/AppTheme.ActionBar" />
         <activity
-            android:name=".presentation.BookListActivity"
+            android:name=".presentation.MainActivity"
             android:label="@string/title_book_list" />
         <activity
             android:theme="@style/AppTheme.ActionBar"
