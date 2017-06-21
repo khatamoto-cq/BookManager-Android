@@ -1,6 +1,7 @@
 package com.caraquri.hatamoto.bookmanager.presentation;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -38,6 +39,8 @@ public class AccountSettingActivity extends BaseActivity implements AccountSetti
     protected void init(@Nullable Bundle savedInstanceState) {
         super.init(savedInstanceState);
         App.getAppComponent(this).inject(this);
+        accountSettingPresenter.attachView(this);
+
         sharedPreferences = getSharedPreferences(
                 getResources().getString(R.string.shared_prefference), Context.MODE_PRIVATE);
 
@@ -74,12 +77,17 @@ public class AccountSettingActivity extends BaseActivity implements AccountSetti
 
     @Override
     public void moveBookList() {
-        startActivity(MainActivity.class);
+        moveMainActivity(MainActivity.BOOK_LIST_FRAGMENT);
     }
 
     @Override
     public void backSetting() {
-//        startActivity(SettingActivity.class);
+        moveMainActivity(MainActivity.SETTING_FRAGMENT);
+    }
+
+    @Override
+    public String getErrorMessage(int resource) {
+        return getResources().getString(resource);
     }
 
     @Override
@@ -95,12 +103,21 @@ public class AccountSettingActivity extends BaseActivity implements AccountSetti
         switch (id) {
             case android.R.id.home:
                 Toast.makeText(AccountSettingActivity.this, "戻るがクリックされた", Toast.LENGTH_LONG).show();
+                finish();
                 break;
             case R.id.action_save:
-                Toast.makeText(AccountSettingActivity.this, "登録しました", Toast.LENGTH_LONG).show();
-                startActivity(MainActivity.class);
+                accountSettingPresenter.save(emailEditText.getText().toString(),
+                        passwordEditText.getText().toString(),
+                        passwordConfirmEditText.getText().toString());
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void moveMainActivity(int moveScreen) {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra(MainActivity.EXTRA_LOAD_FRAGMENT, moveScreen);
+        startActivity(intent);
+        finish();
     }
 }

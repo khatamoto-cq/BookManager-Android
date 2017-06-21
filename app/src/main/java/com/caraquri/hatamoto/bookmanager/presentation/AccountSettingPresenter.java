@@ -2,6 +2,7 @@ package com.caraquri.hatamoto.bookmanager.presentation;
 
 import android.text.TextUtils;
 
+import com.caraquri.hatamoto.bookmanager.R;
 import com.caraquri.hatamoto.bookmanager.presentation.contract.AccountSettingContract;
 import com.caraquri.hatamoto.bookmanager.util.mvp.BasePresenter;
 
@@ -29,7 +30,7 @@ public class AccountSettingPresenter extends BasePresenter<AccountSettingContrac
             return;
         }
 
-        // TODO: 登録処理
+        // TODO: 登録処理(API)
 
         if (!getView().isEntried()) {
             getView().setEntryFlg();
@@ -40,29 +41,30 @@ public class AccountSettingPresenter extends BasePresenter<AccountSettingContrac
         getView().backSetting();
     }
 
-    @Override
-    public List<String> validate(String email, String password, String passwordConfirm) {
+    private List<String> validate(String email, String password, String passwordConfirm) {
         List errors = new ArrayList<String>();
 
         if (email.isEmpty()) {
-            errors.add("メールアドレスが入力されていません");
+            errors.add(getView().getErrorMessage(R.string.validation_email_require));
         } else {
             String regex = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$";
             if (!email.matches(regex)) {
-                errors.add("メールアドレスを正しい形式で入力してください");
+                errors.add(getView().getErrorMessage(R.string.validation_email_invalid));
             }
         }
 
         if (password.isEmpty()) {
-            errors.add("パスワードが入力されていません");
+            errors.add(getView().getErrorMessage(R.string.validation_password_require));
         }
 
         if (passwordConfirm.isEmpty()) {
-            errors.add("パスワード(確認用)が入力されていません");
+            errors.add(getView().getErrorMessage(R.string.validation_password_confirm_require));
         }
 
-        if (password != passwordConfirm) {
-            errors.add("パスワードとパスワード(確認用)が一致しません");
+        if (!password.isEmpty() && !passwordConfirm.isEmpty()) {
+            if (password != passwordConfirm) {
+                errors.add(getView().getErrorMessage(R.string.validation_password_compare));
+            }
         }
 
         return errors;
