@@ -13,7 +13,9 @@ import butterknife.BindView;
 
 public class MainActivity extends BaseActivity {
 
-    public final static String EXTRA_BOOK_ID = "MainActivity.EXTRA_BOOK_ID";
+    public final static String EXTRA_LOAD_FRAGMENT = "MainActivity.EXTRA_LOAD_FRAGMENT";
+    public final static int BOOK_LIST_FRAGMENT = 0;
+    public final static int SETTING_FRAGMENT = 1;
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -23,21 +25,20 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void init(@Nullable Bundle savedInstanceState) {
         super.init(savedInstanceState);
-        toolbar.setTitle(R.string.title_book_list);
         setSupportActionBar(toolbar);
-
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.frame_layout, BookListFragment.newInstance());
-        fragmentTransaction.commit();
+        loadFragment();
 
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             Fragment fragment = null;
+
             switch (item.getItemId()) {
                 case R.id.action_book_list:
                     fragment = BookListFragment.newInstance();
+                    toolbar.setTitle(R.string.title_book_list);
                     break;
                 case R.id.action_setting:
                     fragment = SettingFragment.newInstance();
+                    toolbar.setTitle(R.string.title_setting);
             }
 
             if (fragment != null) {
@@ -48,19 +49,6 @@ public class MainActivity extends BaseActivity {
 
             return true;
         });
-
-//        bookAdapter = new BookAdapter() {
-//            @Override
-//            protected void onItemClicked(@NonNull Book book) {
-//                super.onItemClicked(book);
-//                Intent intent = new Intent();
-//                intent.putExtra(EXTRA_BOOK_ID, book.getId());
-//                startActivity(intent);
-//            }
-//        };
-//
-//        booksRecyclerView.setAdapter(bookAdapter);
-//        booksRecyclerView.setHasFixedSize(true);
     }
 
     @Override
@@ -68,4 +56,19 @@ public class MainActivity extends BaseActivity {
         return R.layout.activity_main;
     }
 
+    private void loadFragment() {
+        Fragment loadFragment;
+
+        if (getIntent().getIntExtra(EXTRA_LOAD_FRAGMENT, 0) == BOOK_LIST_FRAGMENT) {
+            loadFragment = BookListFragment.newInstance();
+            setTitle(getResources().getString(R.string.title_book_list));
+        } else {
+            loadFragment = SettingFragment.newInstance();
+            setTitle(getResources().getString(R.string.title_setting));
+        }
+
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.frame_layout, loadFragment);
+        fragmentTransaction.commit();
+    }
 }
