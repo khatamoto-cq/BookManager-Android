@@ -1,15 +1,28 @@
 package com.caraquri.hatamoto.bookmanager.presentation;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 
+import com.caraquri.hatamoto.bookmanager.App;
 import com.caraquri.hatamoto.bookmanager.R;
+import com.caraquri.hatamoto.bookmanager.presentation.contract.EditBookContract;
 
-public class EditBookActivity extends AppCompatActivity {
+import javax.inject.Inject;
+
+public class EditBookActivity extends BaseActivity implements EditBookContract.View  {
+
+    @Inject
+    EditBookPresenter editBookPresenter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_book);
+    protected void init(@Nullable Bundle savedInstanceState) {
+        super.init(savedInstanceState);
+        App.getAppComponent(this).inject(this);
+        editBookPresenter.attachView(this);
+    }
+
+    @Override
+    protected int getLayoutRes() {
+        return R.layout.activity_edit_book;
     }
 }

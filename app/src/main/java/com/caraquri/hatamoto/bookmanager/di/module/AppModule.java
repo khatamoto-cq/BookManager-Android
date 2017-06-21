@@ -4,6 +4,8 @@ import android.app.Application;
 import android.content.Context;
 
 import com.caraquri.hatamoto.bookmanager.presentation.AccountSettingPresenter;
+import com.caraquri.hatamoto.bookmanager.presentation.AddBookPresenter;
+import com.caraquri.hatamoto.bookmanager.presentation.EditBookPresenter;
 import com.caraquri.hatamoto.bookmanager.presentation.LoginPresenter;
 import com.caraquri.hatamoto.bookmanager.presentation.SplashPresenter;
 
@@ -44,7 +46,17 @@ public class AppModule {
     }
 
     @Provides
-    LoginPresenter proviceLoginPresenter(Scheduler scheduler) {
+    LoginPresenter provideLoginPresenter(Scheduler scheduler) {
         return new LoginPresenter(scheduler);
+    }
+
+    @Provides
+    AddBookPresenter provideAddBookPresenter(Scheduler scheduler) {
+        return new AddBookPresenter(scheduler);
+    }
+
+    @Provides
+    EditBookPresenter provideEditBookPresenter(Scheduler scheduler) {
+        return new EditBookPresenter(scheduler);
     }
 }

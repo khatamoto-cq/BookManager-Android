@@ -2,6 +2,8 @@ package com.caraquri.hatamoto.bookmanager.di.component;
 
 import com.caraquri.hatamoto.bookmanager.di.module.AppModule;
 import com.caraquri.hatamoto.bookmanager.presentation.AccountSettingActivity;
+import com.caraquri.hatamoto.bookmanager.presentation.AddBookActivity;
+import com.caraquri.hatamoto.bookmanager.presentation.EditBookActivity;
 import com.caraquri.hatamoto.bookmanager.presentation.LoginActivity;
 import com.caraquri.hatamoto.bookmanager.presentation.SplashActivity;
 
@@ -16,4 +18,6 @@ public interface AppComponent {
     void inject(SplashActivity activity);
     void inject(AccountSettingActivity activity);
     void inject(LoginActivity activity);
+    void inject(AddBookActivity activity);
+    void inject(EditBookActivity activity);
 }
