@@ -3,8 +3,11 @@ package com.caraquri.hatamoto.bookmanager.di.module;
 import android.app.Application;
 import android.content.Context;
 
+import com.caraquri.hatamoto.bookmanager.data.repository.BookRepositoryImpl;
+import com.caraquri.hatamoto.bookmanager.domain.repository.BookRepository;
 import com.caraquri.hatamoto.bookmanager.presentation.AccountSettingPresenter;
 import com.caraquri.hatamoto.bookmanager.presentation.AddBookPresenter;
+import com.caraquri.hatamoto.bookmanager.presentation.BookListPresenter;
 import com.caraquri.hatamoto.bookmanager.presentation.EditBookPresenter;
 import com.caraquri.hatamoto.bookmanager.presentation.LoginPresenter;
 import com.caraquri.hatamoto.bookmanager.presentation.SplashPresenter;
@@ -36,6 +39,11 @@ public class AppModule {
     }
 
     @Provides
+    BookRepository providebookRepository() {
+        return new BookRepositoryImpl();
+    }
+
+    @Provides
     SplashPresenter provideSplashPresenter() {
         return new SplashPresenter();
     }
@@ -58,5 +66,10 @@ public class AppModule {
     @Provides
     EditBookPresenter provideEditBookPresenter(Scheduler scheduler) {
         return new EditBookPresenter(scheduler);
+    }
+
+    @Provides
+    BookListPresenter provideBookListPresenter(Scheduler scheduler, BookRepository bookRepository) {
+        return new BookListPresenter(scheduler, bookRepository);
     }
 }
