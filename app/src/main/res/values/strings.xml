@@ -21,7 +21,7 @@
     <string name="label_password_confirm">パスワード確認</string>
     <string name="label_book_name">書籍名</string>
     <string name="label_book_price">金額</string>
-    <string name="label_book_purchase_day">購入金額</string>
+    <string name="label_book_purchase_day">購入日</string>
 
     <!-- ボタン -->
     <string name="button_setting_account">アカウント設定</string>
