@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 
 import com.caraquri.hatamoto.bookmanager.presentation.AccountSettingPresenter;
+import com.caraquri.hatamoto.bookmanager.presentation.LoginPresenter;
 import com.caraquri.hatamoto.bookmanager.presentation.SplashPresenter;
 
 import javax.inject.Singleton;
@@ -40,5 +41,10 @@ public class AppModule {
     @Provides
     AccountSettingPresenter provideAccountSettingPresenter(Scheduler scheduler) {
         return new AccountSettingPresenter(scheduler);
+    }
+
+    @Provides
+    LoginPresenter proviceLoginPresenter(Scheduler scheduler) {
+        return new LoginPresenter(scheduler);
     }
 }

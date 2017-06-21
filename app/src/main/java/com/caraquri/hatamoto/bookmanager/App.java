@@ -12,11 +12,11 @@ import timber.log.Timber;
 
 public class App extends Application {
 
-    private AppComponent mAppComponent;
+    private AppComponent appComponent;
 
     public static AppComponent getAppComponent(Context context) {
         App app = (App) context.getApplicationContext();
-        return app.mAppComponent;
+        return app.appComponent;
     }
 
     @Override
@@ -29,7 +29,7 @@ public class App extends Application {
     }
 
     private void initializeDagger() {
-        mAppComponent = DaggerAppComponent.builder()
+        appComponent = DaggerAppComponent.builder()
                 .appModule(new AppModule(this))
                 .build();
     }
