@@ -45,7 +45,7 @@ public class AccountSettingActivity extends BaseActivity implements AccountSetti
                 getResources().getString(R.string.shared_prefference), Context.MODE_PRIVATE);
 
         toolbar.setTitle(R.string.title_account_setting);
-        toolbar.inflateMenu(R.menu.menu_account_setting);
+        toolbar.inflateMenu(R.menu.menu_save);
         setSupportActionBar(toolbar);
         if (isEntried()) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -92,7 +92,7 @@ public class AccountSettingActivity extends BaseActivity implements AccountSetti
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_account_setting, menu);
+        getMenuInflater().inflate(R.menu.menu_save, menu);
         return true;
     }
 

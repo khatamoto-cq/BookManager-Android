@@ -62,7 +62,7 @@ public class AccountSettingPresenter extends BasePresenter<AccountSettingContrac
         }
 
         if (!password.isEmpty() && !passwordConfirm.isEmpty()) {
-            if (password != passwordConfirm) {
+            if (!password.equals(passwordConfirm)) {
                 errors.add(getView().getErrorMessage(R.string.validation_password_compare));
             }
         }
