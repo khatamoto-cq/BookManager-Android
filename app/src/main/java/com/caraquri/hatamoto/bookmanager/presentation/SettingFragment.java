@@ -1,9 +1,7 @@
 package com.caraquri.hatamoto.bookmanager.presentation;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,9 +9,6 @@ import android.view.ViewGroup;
 
 import com.caraquri.hatamoto.bookmanager.R;
 
-import java.time.Instant;
-
-import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 

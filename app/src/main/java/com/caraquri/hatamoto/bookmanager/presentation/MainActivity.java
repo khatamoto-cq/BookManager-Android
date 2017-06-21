@@ -6,6 +6,9 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.caraquri.hatamoto.bookmanager.R;
 
@@ -17,6 +20,8 @@ public class MainActivity extends BaseActivity {
     public final static int BOOK_LIST_FRAGMENT = 0;
     public final static int SETTING_FRAGMENT = 1;
 
+    private int currentFragment;
+
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.bottom_navigation)
@@ -26,19 +31,24 @@ public class MainActivity extends BaseActivity {
     protected void init(@Nullable Bundle savedInstanceState) {
         super.init(savedInstanceState);
         setSupportActionBar(toolbar);
-        loadFragment();
+        currentFragment = getIntent().getIntExtra(EXTRA_LOAD_FRAGMENT, 0);
+        toolbar.inflateMenu(R.menu.menu_save);
 
+        loadFragment();
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             Fragment fragment = null;
+            MenuItem menuItem = toolbar.getMenu().findItem(R.id.action_add);
 
             switch (item.getItemId()) {
                 case R.id.action_book_list:
                     fragment = BookListFragment.newInstance();
                     toolbar.setTitle(R.string.title_book_list);
+                    menuItem.setVisible(true);
                     break;
                 case R.id.action_setting:
                     fragment = SettingFragment.newInstance();
                     toolbar.setTitle(R.string.title_setting);
+                    menuItem.setVisible(false);
             }
 
             if (fragment != null) {
@@ -58,8 +68,7 @@ public class MainActivity extends BaseActivity {
 
     private void loadFragment() {
         Fragment loadFragment;
-
-        if (getIntent().getIntExtra(EXTRA_LOAD_FRAGMENT, 0) == BOOK_LIST_FRAGMENT) {
+        if (currentFragment == BOOK_LIST_FRAGMENT) {
             loadFragment = BookListFragment.newInstance();
             setTitle(getResources().getString(R.string.title_book_list));
         } else {
@@ -70,5 +79,28 @@ public class MainActivity extends BaseActivity {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.frame_layout, loadFragment);
         fragmentTransaction.commit();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_add, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (item.getItemId() == R.id.action_add) {
+            startActivity(AddBookActivity.class);
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        // MainActivityは戻るボタンを押すとアプリが終了されてしまうので戻るボタンを使用不可にする
+        return event.getKeyCode() == KeyEvent.KEYCODE_BACK || super.dispatchKeyEvent(event);
     }
 }
