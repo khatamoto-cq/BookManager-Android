@@ -40,10 +40,6 @@
             android:theme="@style/AppTheme.ActionBar"
             android:name=".presentation.EditBookActivity"
             android:label="@string/title_edit_book"/>
-        <activity
-            android:theme="@style/AppTheme.ActionBar"
-            android:name=".presentation.SettingActivity"
-            android:label="@string/title_setting"/>
     </application>
 
 </manifest>

@@ -79,7 +79,7 @@ public class AccountSettingActivity extends BaseActivity implements AccountSetti
 
     @Override
     public void backSetting() {
-        startActivity(SettingActivity.class);
+//        startActivity(SettingActivity.class);
     }
 
     @Override
