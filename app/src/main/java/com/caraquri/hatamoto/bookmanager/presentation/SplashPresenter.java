@@ -7,7 +7,7 @@ public class SplashPresenter extends BasePresenter<SplashContract.View> implemen
 
     @Override
     public void moveNextScreen() {
-        if (getView().checkEntry()) {
+        if (getView().isEntried()) {
             getView().moveLogin();
         } else {
             getView().moveAccountSetting();

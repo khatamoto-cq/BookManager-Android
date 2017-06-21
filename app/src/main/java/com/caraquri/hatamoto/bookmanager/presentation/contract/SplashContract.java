@@ -4,7 +4,7 @@ import com.caraquri.hatamoto.bookmanager.util.mvp.MvpView;
 
 public interface SplashContract {
     interface View extends MvpView {
-        boolean checkEntry();
+        boolean isEntried();
         void moveAccountSetting();
         void moveLogin();
     }
