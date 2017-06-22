@@ -2,7 +2,6 @@ package com.caraquri.hatamoto.bookmanager.presentation;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.caraquri.hatamoto.bookmanager.App;
@@ -40,12 +39,19 @@ public class EditBookActivity extends AbstractBookActivity implements EditBookCo
 
     @Override
     protected void tapBackButton() {
-        Toast.makeText(this, "戻るボタンが押されたよ", Toast.LENGTH_LONG).show();
+        editBookPresenter.backScreen();
     }
 
     @Override
     protected void tapSaveButton() {
-        Toast.makeText(this, "保存ボタンが押されたよ", Toast.LENGTH_LONG).show();
+        String name = nameEditTest.getText().toString();
+        int price = 0;
+        if (!priceEditText.getText().toString().isEmpty()) {
+            price = Integer.parseInt(priceEditText.getText().toString());
+        }
+        String purchaseDate = purchaseDateEditText.getText().toString();
+
+        editBookPresenter.save(new Book(name, price, purchaseDate));
     }
 
     private void initControls(Book book) {
