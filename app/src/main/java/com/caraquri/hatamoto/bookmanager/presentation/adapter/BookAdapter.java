@@ -1,5 +1,6 @@
 package com.caraquri.hatamoto.bookmanager.presentation.adapter;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.caraquri.hatamoto.bookmanager.R;
 import com.caraquri.hatamoto.bookmanager.domain.entity.Book;
 
@@ -22,6 +24,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
 
     private List<Book> books = new ArrayList<>();
     private final Object lock = new Object();
+    private Context context;
 
     protected void onItemClicked(@NonNull Book book) {
     }
@@ -31,6 +34,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
         final LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         final View view = inflater.inflate(R.layout.item_book, parent, false);
         final BookAdapter.ViewHolder holder = new BookAdapter.ViewHolder(view);
+        this.context = parent.getContext();
         ButterKnife.bind(this, view);
 
         holder.row.setOnClickListener(v -> {
@@ -46,9 +50,12 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
     public void onBindViewHolder(BookAdapter.ViewHolder holder, int position) {
         if (position < books.size()) {
             final Book book = books.get(position);
+            if (!book.getImageUrl().isEmpty()) {
+                Glide.with(context).load(book.getImageUrl()).into(holder.imageView);
+            }
             holder.name.setText(book.getName());
             if (book.getPrice() > 0) {
-                holder.price.setText(String.valueOf(book.getPrice()) + "円  + 税");
+                holder.price.setText(context.getString(R.string.text_book_price, book.getPrice()));
             }
             holder.date.setText(book.getPurchaseDate());
         }
