@@ -10,11 +10,15 @@ import com.caraquri.hatamoto.bookmanager.util.mvp.BasePresenter;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import io.reactivex.Scheduler;
 import timber.log.Timber;
 
 public class EditBookPresenter extends BasePresenter<EditBookContract.View> implements EditBookContract.Action {
-    private Scheduler scheduler;
+
+    @Inject
+    Scheduler scheduler;
 
     public EditBookPresenter(Scheduler scheduler) {
         // API実装時に必要なRxJavaのスケジューラをDIしとく

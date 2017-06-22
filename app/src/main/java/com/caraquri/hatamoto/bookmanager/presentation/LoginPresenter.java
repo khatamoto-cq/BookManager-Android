@@ -9,13 +9,15 @@ import com.caraquri.hatamoto.bookmanager.util.mvp.BasePresenter;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import io.reactivex.Scheduler;
 
 
-public class LoginPresenter extends BasePresenter<LoginContract.View>
-        implements LoginContract.Action {
+public class LoginPresenter extends BasePresenter<LoginContract.View> implements LoginContract.Action {
 
-    private Scheduler scheduler;
+    @Inject
+    Scheduler scheduler;
 
     public LoginPresenter(Scheduler scheduler) {
         // API実装時に必要なRxJavaのスケジューラをDIしとく

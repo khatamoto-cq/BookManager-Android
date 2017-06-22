@@ -11,12 +11,15 @@ import com.caraquri.hatamoto.bookmanager.util.mvp.BasePresenter;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import io.reactivex.Scheduler;
 import timber.log.Timber;
 
 public class AddBookPresenter extends BasePresenter<AddBookContract.View> implements AddBookContract.Action {
 
-    private Scheduler scheduler;
+    @Inject
+    Scheduler scheduler;
 
     public AddBookPresenter(Scheduler scheduler) {
         // API実装時に必要なRxJavaのスケジューラをDIしとく
