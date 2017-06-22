@@ -42,6 +42,7 @@ public class BookListPresenter extends BasePresenter<BookListContract.View> impl
 
                     @Override
                     public void onNext(@NonNull Book book) {
+                        getView().set(book);
                         Timber.d(book.toString());
                     }
 

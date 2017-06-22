@@ -12,13 +12,16 @@ import android.widget.TextView;
 import com.caraquri.hatamoto.bookmanager.R;
 import com.caraquri.hatamoto.bookmanager.domain.entity.Book;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
-    private List<Book> books;
+
+    private List<Book> books = new ArrayList<>();
+    private final Object lock = new Object();
 
     protected void onItemClicked(@NonNull Book book) {
     }
@@ -44,7 +47,9 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
         if (position < books.size()) {
             final Book book = books.get(position);
             holder.name.setText(book.getName());
-            holder.price.setText(book.getPrice());
+            if (book.getPrice() > 0) {
+                holder.price.setText(String.valueOf(book.getPrice()) + "円  + 税");
+            }
             holder.date.setText(book.getPurchaseDate());
         }
     }
@@ -82,5 +87,13 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
 
     public Book get(int position) {
         return (books != null && !books.isEmpty()) ? books.get(position) : null;
+    }
+
+    public void set(@NonNull Book book) {
+        synchronized (lock) {
+            final int position = books.size();
+            books.add(book);
+            notifyItemInserted(position);
+        }
     }
 }
