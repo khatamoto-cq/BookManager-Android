@@ -3,6 +3,8 @@ package com.caraquri.hatamoto.bookmanager.domain.entity;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.io.Serializable;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,6 +18,10 @@ public class Book implements Parcelable {
     private String name;
     private int price;
     private String purchaseDate;
+
+    public Book(String name, int price, String purchaseDate) {
+        this(0, "", name, price, purchaseDate);
+    }
 
     @Override
     public int describeContents() {

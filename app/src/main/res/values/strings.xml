@@ -38,11 +38,19 @@
     <string name="shared_prefference">BookManagerPreferences</string>
     <string name="entry_flg">EntryFlg</string>
 
-    <!-- エラー -->
+    <!-- バリデーションエラー -->
     <string name="validation_title">入力エラー</string>
     <string name="validation_email_require">・メールアドレスが入力されていません</string>
     <string name="validation_email_invalid">・メールアドレスを正しい形式で入力してください</string>
     <string name="validation_password_require">・パスワードが入力されていません</string>
     <string name="validation_password_confirm_require">・パスワード(確認用)が入力されていません</string>
     <string name="validation_password_compare">・パスワードとパスワード(確認用)が一致しません</string>
+    <string name="validation_book_name_require">・書籍名が入力されていません</string>
+    <string name="validation_book_price_require">・価格が入力されていません</string>
+    <string name="validation_book_purchase_date_invalid">・購入日を正しい日付で入力してください</string>
+
+    <!-- エラー -->
+    <string name="error_title">エラー</string>
+    <string name="error_read_file">ファイルを読み込み中にエラーが発生しました</string>
+    <string name="error_file_not_found">ファイルが見つかりませんでした</string>
 </resources>

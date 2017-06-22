@@ -33,11 +33,9 @@
             android:name=".presentation.MainActivity"
             android:label="@string/title_book_list" />
         <activity
-            android:theme="@style/AppTheme.ActionBar"
             android:name=".presentation.AddBookActivity"
             android:label="@string/title_add_book"/>
         <activity
-            android:theme="@style/AppTheme.ActionBar"
             android:name=".presentation.EditBookActivity"
             android:label="@string/title_edit_book"/>
     </application>
