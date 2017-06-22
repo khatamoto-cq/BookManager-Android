@@ -3,8 +3,6 @@ package com.caraquri.hatamoto.bookmanager.domain.entity;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.io.Serializable;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
