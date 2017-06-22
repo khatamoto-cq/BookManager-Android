@@ -23,6 +23,9 @@
     <string name="label_book_price">金額</string>
     <string name="label_book_purchase_day">購入日</string>
 
+    <!-- テキスト -->
+    <string name="text_book_price">%1$d円 + 税</string>
+
     <!-- ボタン -->
     <string name="button_setting_account">アカウント設定</string>
     <string name="button_attach_image">画像添付ボタン</string>
