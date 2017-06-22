@@ -102,7 +102,6 @@ public class AccountSettingActivity extends BaseActivity implements AccountSetti
 
         switch (id) {
             case android.R.id.home:
-                Toast.makeText(AccountSettingActivity.this, "戻るがクリックされた", Toast.LENGTH_LONG).show();
                 finish();
                 break;
             case R.id.action_save:
