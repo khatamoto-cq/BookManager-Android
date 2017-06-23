@@ -80,18 +80,18 @@ public abstract class AbstractBookActivity extends BaseActivity {
 
         switch (id) {
             case android.R.id.home:
-                tapBackButton();
+                clickBackButton();
                 break;
             case R.id.action_save:
-                tapSaveButton();
+                clickSaveButton();
         }
 
         return super.onOptionsItemSelected(item);
     }
 
-    protected abstract void tapBackButton();
+    protected abstract void clickBackButton();
 
-    protected abstract void tapSaveButton();
+    protected abstract void clickSaveButton();
 
     protected abstract AbstractBookActivity getBookActivity();
 

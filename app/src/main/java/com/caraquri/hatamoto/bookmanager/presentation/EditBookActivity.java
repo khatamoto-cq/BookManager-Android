@@ -44,12 +44,12 @@ public class EditBookActivity extends AbstractBookActivity implements RegisterBo
     }
 
     @Override
-    protected void tapBackButton() {
+    protected void clickBackButton() {
         editBookPresenter.backScreen();
     }
 
     @Override
-    protected void tapSaveButton() {
+    protected void clickSaveButton() {
         String name = nameEditTest.getText().toString();
         int price = 0;
         if (!priceEditText.getText().toString().isEmpty()) {
