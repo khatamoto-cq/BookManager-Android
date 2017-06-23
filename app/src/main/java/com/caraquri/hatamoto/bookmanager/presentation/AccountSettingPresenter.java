@@ -64,10 +64,8 @@ public class AccountSettingPresenter extends BasePresenter<AccountSettingContrac
             errors.add(getView().getErrorMessage(R.string.validation_password_confirm_require));
         }
 
-        if (!password.isEmpty() && !passwordConfirm.isEmpty()) {
-            if (!password.equals(passwordConfirm)) {
-                errors.add(getView().getErrorMessage(R.string.validation_password_compare));
-            }
+        if (!password.isEmpty() && !passwordConfirm.isEmpty() && !password.equals(passwordConfirm)) {
+            errors.add(getView().getErrorMessage(R.string.validation_password_compare));
         }
 
         return errors;
