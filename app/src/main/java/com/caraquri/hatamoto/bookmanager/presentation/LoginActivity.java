@@ -36,16 +36,6 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     }
 
     @Override
-    public void showError(String message) {
-        showDialog(getResources().getString(R.string.validation_title), message);
-    }
-
-    @Override
-    public String getErrorMessage(int resource) {
-        return getResources().getString(resource);
-    }
-
-    @Override
     public void moveBookList() {
         startActivity(MainActivity.class);
     }
