@@ -41,7 +41,7 @@ public class AccountSettingPresenter extends BasePresenter<AccountSettingContrac
             return;
         }
 
-        getView().backSetting();
+        getView().moveSetting();
     }
 
     private List<String> validate(String email, String password, String passwordConfirm) {

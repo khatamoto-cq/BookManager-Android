@@ -76,7 +76,7 @@ public class AccountSettingActivity extends BaseActivity implements AccountSetti
     }
 
     @Override
-    public void backSetting() {
+    public void moveSetting() {
         moveMainActivity(MainActivity.SETTING_FRAGMENT);
     }
 

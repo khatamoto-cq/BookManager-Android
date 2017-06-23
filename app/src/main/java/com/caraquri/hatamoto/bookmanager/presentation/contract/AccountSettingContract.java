@@ -12,7 +12,7 @@ public interface AccountSettingContract {
 
         void moveBookList();
 
-        void backSetting();
+        void moveSetting();
 
         String getErrorMessage(int resource);
     }
