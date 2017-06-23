@@ -10,7 +10,7 @@ public final class AccountValidator {
 
     private AccountSettingContract.View view;
 
-    public AccountValidator(AccountSettingContract.View mvpView){
+    public AccountValidator(AccountSettingContract.View mvpView) {
         view = mvpView;
     }
 

@@ -90,7 +90,9 @@ public abstract class AbstractBookActivity extends BaseActivity {
     }
 
     protected abstract void tapBackButton();
+
     protected abstract void tapSaveButton();
+
     protected abstract AbstractBookActivity getBookActivity();
 
     @Override

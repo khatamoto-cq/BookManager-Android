@@ -1,33 +1,15 @@
 package com.caraquri.hatamoto.bookmanager.presentation;
 
-import android.app.DatePickerDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.ParcelFileDescriptor;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.EditText;
-import android.widget.TextView;
 
 import com.caraquri.hatamoto.bookmanager.R;
 import com.kaopiz.kprogresshud.KProgressHUD;
 
-import java.io.FileDescriptor;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Locale;
-import java.util.TimeZone;
-
 import butterknife.ButterKnife;
-import timber.log.Timber;
 
 public abstract class BaseActivity extends AppCompatActivity {
 

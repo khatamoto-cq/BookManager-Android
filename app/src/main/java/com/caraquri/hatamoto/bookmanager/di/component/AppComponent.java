@@ -17,9 +17,14 @@ import dagger.Component;
         AppModule.class})
 public interface AppComponent {
     void inject(SplashActivity activity);
+
     void inject(AccountSettingActivity activity);
+
     void inject(LoginActivity activity);
+
     void inject(AddBookActivity activity);
+
     void inject(EditBookActivity activity);
+
     void inject(BookListFragment fragment);
 }

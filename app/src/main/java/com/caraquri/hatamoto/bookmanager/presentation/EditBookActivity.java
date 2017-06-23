@@ -11,7 +11,7 @@ import com.caraquri.hatamoto.bookmanager.presentation.contract.RegisterBookContr
 
 import javax.inject.Inject;
 
-public class EditBookActivity extends AbstractBookActivity implements RegisterBookContract.View  {
+public class EditBookActivity extends AbstractBookActivity implements RegisterBookContract.View {
 
     @Inject
     EditBookPresenter editBookPresenter;
