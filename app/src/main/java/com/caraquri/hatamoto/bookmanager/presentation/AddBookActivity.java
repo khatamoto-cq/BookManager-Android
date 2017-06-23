@@ -6,11 +6,11 @@ import android.support.annotation.Nullable;
 import com.caraquri.hatamoto.bookmanager.App;
 import com.caraquri.hatamoto.bookmanager.R;
 import com.caraquri.hatamoto.bookmanager.domain.entity.Book;
-import com.caraquri.hatamoto.bookmanager.presentation.contract.AddBookContract;
+import com.caraquri.hatamoto.bookmanager.presentation.contract.RegisterBookContract;
 
 import javax.inject.Inject;
 
-public class AddBookActivity extends AbstractBookActivity implements AddBookContract.View {
+public class AddBookActivity extends AbstractBookActivity implements RegisterBookContract.View {
 
     @Inject
     AddBookPresenter addBookPresenter;

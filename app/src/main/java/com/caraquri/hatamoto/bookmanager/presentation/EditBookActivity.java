@@ -7,11 +7,11 @@ import com.bumptech.glide.Glide;
 import com.caraquri.hatamoto.bookmanager.App;
 import com.caraquri.hatamoto.bookmanager.R;
 import com.caraquri.hatamoto.bookmanager.domain.entity.Book;
-import com.caraquri.hatamoto.bookmanager.presentation.contract.EditBookContract;
+import com.caraquri.hatamoto.bookmanager.presentation.contract.RegisterBookContract;
 
 import javax.inject.Inject;
 
-public class EditBookActivity extends AbstractBookActivity implements EditBookContract.View  {
+public class EditBookActivity extends AbstractBookActivity implements RegisterBookContract.View  {
 
     @Inject
     EditBookPresenter editBookPresenter;
