@@ -38,10 +38,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(getLayoutRes());
         ButterKnife.bind(this);
-
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         mProgress = KProgressHUD.create(this)
                 .setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
