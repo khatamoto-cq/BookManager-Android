@@ -19,8 +19,7 @@ public class SettingFragment extends Fragment {
     }
 
     public static SettingFragment newInstance() {
-        SettingFragment fragment = new SettingFragment();
-        return fragment;
+        return new SettingFragment();
     }
 
     @Override
