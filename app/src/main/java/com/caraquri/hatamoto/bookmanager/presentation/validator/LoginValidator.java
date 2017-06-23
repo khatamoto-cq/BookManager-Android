@@ -8,13 +8,10 @@ import java.util.List;
 
 public final class LoginValidator {
 
-    private static LoginValidator singleton = new LoginValidator();
+    private LoginContract.View view;
 
-    private static LoginContract.View view;
-
-    public static LoginValidator getInstance(LoginContract.View mvpView) {
+    public LoginValidator(LoginContract.View mvpView) {
         view = mvpView;
-        return singleton;
     }
 
     public List<String> validate(String email, String password) {

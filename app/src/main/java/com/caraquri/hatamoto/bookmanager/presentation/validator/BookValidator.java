@@ -9,13 +9,10 @@ import java.util.List;
 
 public final class BookValidator {
 
-    private static BookValidator singleton = new BookValidator();
+    private RegisterBookContract.View view;
 
-    private static RegisterBookContract.View view;
-
-    public static BookValidator getInstance(RegisterBookContract.View mvpView){
+    public BookValidator(RegisterBookContract.View mvpView){
         view = mvpView;
-        return singleton;
     }
 
     public List<String> validate(Book book) {

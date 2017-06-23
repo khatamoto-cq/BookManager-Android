@@ -25,7 +25,7 @@ public class LoginPresenter extends BasePresenter<LoginContract.View> implements
 
     @Override
     public void logIn(String email, String password) {
-        LoginValidator validator = LoginValidator.getInstance(getView());
+        LoginValidator validator = new LoginValidator(getView());
         List<String> errors = validator.validate(email, password);
 
         if (!errors.isEmpty()) {

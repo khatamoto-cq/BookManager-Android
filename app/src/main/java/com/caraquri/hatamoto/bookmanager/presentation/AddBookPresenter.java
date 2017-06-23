@@ -31,7 +31,7 @@ public class AddBookPresenter extends BasePresenter<RegisterBookContract.View> i
 
     @Override
     public void save(Book book) {
-        BookValidator validator = BookValidator.getInstance(getView());
+        BookValidator validator = new BookValidator(getView());
         List<String> errors = validator.validate(book);
 
         if (!errors.isEmpty()) {
