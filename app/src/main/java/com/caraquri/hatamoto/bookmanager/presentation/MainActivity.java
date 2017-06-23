@@ -20,8 +20,6 @@ public class MainActivity extends BaseActivity {
     public final static int BOOK_LIST_FRAGMENT = 0;
     public final static int SETTING_FRAGMENT = 1;
 
-    private int currentFragment;
-
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.bottom_navigation)
@@ -31,10 +29,9 @@ public class MainActivity extends BaseActivity {
     protected void init(@Nullable Bundle savedInstanceState) {
         super.init(savedInstanceState);
         setSupportActionBar(toolbar);
-        currentFragment = getIntent().getIntExtra(EXTRA_LOAD_FRAGMENT, 0);
         toolbar.inflateMenu(R.menu.menu_save);
+        loadFragment(getIntent().getIntExtra(EXTRA_LOAD_FRAGMENT, 0));
 
-        loadFragment();
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             Fragment fragment = null;
             MenuItem menuItem = toolbar.getMenu().findItem(R.id.action_add);
@@ -66,7 +63,7 @@ public class MainActivity extends BaseActivity {
         return R.layout.activity_main;
     }
 
-    private void loadFragment() {
+    private void loadFragment(int currentFragment) {
         Fragment loadFragment;
         if (currentFragment == BOOK_LIST_FRAGMENT) {
             loadFragment = BookListFragment.newInstance();
