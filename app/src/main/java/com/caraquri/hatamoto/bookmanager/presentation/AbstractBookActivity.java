@@ -34,15 +34,15 @@ public abstract class AbstractBookActivity extends BaseActivity {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
-    @BindView(R.id.imageView)
+    @BindView(R.id.image_view)
     ImageView imageView;
-    @BindView(R.id.nameEditText)
+    @BindView(R.id.name_edit_text)
     EditText nameEditTest;
-    @BindView(R.id.priceEditText)
+    @BindView(R.id.price_edit_text)
     EditText priceEditText;
-    @BindView(R.id.purchaseDateEditText)
+    @BindView(R.id.purchase_date_edit_text)
     EditText purchaseDateEditText;
-    @BindView(R.id.attachButton)
+    @BindView(R.id.attach_button)
     Button attachButton;
 
     @Override

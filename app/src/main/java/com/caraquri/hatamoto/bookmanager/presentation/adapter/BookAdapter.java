@@ -69,7 +69,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.card_view)
         CardView row;
-        @BindView(R.id.imageView)
+        @BindView(R.id.image_view)
         ImageView imageView;
         @BindView(R.id.name)
         public TextView name;

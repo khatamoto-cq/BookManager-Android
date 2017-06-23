@@ -15,9 +15,9 @@ import butterknife.OnClick;
 
 public class LoginActivity extends BaseActivity implements LoginContract.View {
 
-    @BindView(R.id.emailEditText)
+    @BindView(R.id.email_edit_text)
     EditText loginEditText;
-    @BindView(R.id.passwordEditText)
+    @BindView(R.id.password_edit_text)
     EditText passwordEditText;
 
     @Inject
@@ -46,7 +46,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
         startActivity(MainActivity.class);
     }
 
-    @OnClick(R.id.loginButton)
+    @OnClick(R.id.login_button)
     public void login() {
         loginPresenter.logIn(loginEditText.getText().toString(),
                 passwordEditText.getText().toString());

@@ -15,18 +15,18 @@
         app:layout_constraintHorizontal_bias="0.521" />
 
     <TextView
-        android:id="@+id/emailLabel"
+        android:id="@+id/email_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/margin_short"
         android:layout_marginLeft="@dimen/margin_normal"
         android:text="@string/label_email"
-        app:layout_constraintBottom_toTopOf="@+id/emailEditText"
+        app:layout_constraintBottom_toTopOf="@+id/email_edit_text"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginStart="@dimen/margin_normal" />
 
     <EditText
-        android:id="@+id/emailEditText"
+        android:id="@+id/email_edit_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/margin_normal"
@@ -42,18 +42,18 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <TextView
-        android:id="@+id/passwordLabel"
+        android:id="@+id/password_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/margin_short"
         android:layout_marginLeft="@dimen/margin_normal"
         android:text="@string/label_password"
-        app:layout_constraintBottom_toTopOf="@+id/passwordEditText"
+        app:layout_constraintBottom_toTopOf="@+id/password_edit_text"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginStart="@dimen/margin_normal" />
 
     <EditText
-        android:id="@+id/passwordEditText"
+        android:id="@+id/password_edit_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/margin_normal"
@@ -64,23 +64,23 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailEditText"
+        app:layout_constraintTop_toBottomOf="@+id/email_edit_text"
         android:layout_marginStart="@dimen/margin_normal"
         android:layout_marginEnd="@dimen/margin_normal" />
 
     <TextView
-        android:id="@+id/passwordConfirmLabel"
+        android:id="@+id/password_confirm_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/margin_short"
         android:layout_marginLeft="@dimen/margin_normal"
         android:text="@string/label_password_confirm"
-        app:layout_constraintBottom_toTopOf="@+id/passwordConfirmEditText"
+        app:layout_constraintBottom_toTopOf="@+id/password_confirm_edit_text"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginStart="@dimen/margin_normal" />
 
     <EditText
-        android:id="@+id/passwordConfirmEditText"
+        android:id="@+id/password_confirm_edit_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/margin_normal"
@@ -91,7 +91,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordEditText"
+        app:layout_constraintTop_toBottomOf="@+id/password_edit_text"
         android:layout_marginStart="@dimen/margin_normal"
         android:layout_marginEnd="@dimen/margin_normal" />
 

@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/image_view"
         android:layout_width="@dimen/image_size_width"
         android:layout_height="@dimen/image_size_height"
         android:layout_marginLeft="@dimen/margin_middle"
@@ -25,29 +25,29 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <Button
-        android:id="@+id/attachButton"
+        android:id="@+id/attach_button"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="@dimen/register_book_button_width"
         android:layout_height="@dimen/register_book_button_height"
         android:layout_marginLeft="@dimen/margin_middle"
         android:layout_marginTop="@dimen/margin_extra_long"
         android:text="@string/button_attach_image"
-        app:layout_constraintLeft_toRightOf="@+id/imageView"
+        app:layout_constraintLeft_toRightOf="@+id/image_view"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <TextView
-        android:id="@+id/nameLabel"
+        android:id="@+id/name_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/margin_extra_short"
         android:layout_marginLeft="@dimen/margin_normal"
         android:text="@string/label_book_name"
         android:textSize="@dimen/text_size_normal"
-        app:layout_constraintBottom_toTopOf="@+id/nameEditText"
+        app:layout_constraintBottom_toTopOf="@+id/name_edit_text"
         app:layout_constraintLeft_toLeftOf="parent" />
 
     <EditText
-        android:id="@+id/nameEditText"
+        android:id="@+id/name_edit_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/margin_normal"
@@ -61,18 +61,18 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <TextView
-        android:id="@+id/priceLabel"
+        android:id="@+id/price_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/margin_extra_short"
         android:layout_marginLeft="@dimen/margin_normal"
         android:text="@string/label_book_price"
         android:textSize="@dimen/text_size_normal"
-        app:layout_constraintBottom_toTopOf="@+id/priceEditText"
+        app:layout_constraintBottom_toTopOf="@+id/price_edit_text"
         app:layout_constraintLeft_toLeftOf="parent" />
 
     <EditText
-        android:id="@+id/priceEditText"
+        android:id="@+id/price_edit_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/margin_normal"
@@ -83,21 +83,21 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/name_edit_text" />
 
     <TextView
-        android:id="@+id/purchaseDateLabel"
+        android:id="@+id/purchase_date_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/margin_extra_short"
         android:layout_marginLeft="@dimen/margin_normal"
         android:text="@string/label_book_purchase_day"
         android:textSize="@dimen/text_size_normal"
-        app:layout_constraintBottom_toTopOf="@+id/purchaseDateEditText"
+        app:layout_constraintBottom_toTopOf="@+id/purchase_date_edit_text"
         app:layout_constraintLeft_toLeftOf="parent" />
 
     <EditText
-        android:id="@+id/purchaseDateEditText"
+        android:id="@+id/purchase_date_edit_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/margin_normal"
@@ -108,6 +108,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/priceEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/price_edit_text" />
 
 </android.support.constraint.ConstraintLayout>

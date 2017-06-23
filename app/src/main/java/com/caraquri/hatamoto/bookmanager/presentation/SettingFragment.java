@@ -30,7 +30,7 @@ public class SettingFragment extends Fragment {
         return view;
     }
 
-    @OnClick(R.id.settingButton)
+    @OnClick(R.id.setting_button)
     public void moveAccountSetting() {
         Intent intent = new Intent(getActivity(), AccountSettingActivity.class);
         getActivity().startActivity(intent);

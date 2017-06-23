@@ -27,7 +27,7 @@ public class BookListFragment extends BaseFragment implements BookListContract.V
     @Inject
     BookListPresenter bookListPresenter;
 
-    @BindView(R.id.bookListRecyclerView)
+    @BindView(R.id.book_list_recycler_view)
     RecyclerView bookListRecyclerView;
 
     private BookAdapter bookAdapter;

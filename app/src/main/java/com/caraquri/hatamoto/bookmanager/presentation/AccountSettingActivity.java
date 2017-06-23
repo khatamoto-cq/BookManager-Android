@@ -27,11 +27,11 @@ public class AccountSettingActivity extends BaseActivity implements AccountSetti
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
-    @BindView(R.id.emailEditText)
+    @BindView(R.id.email_edit_text)
     EditText emailEditText;
-    @BindView(R.id.passwordEditText)
+    @BindView(R.id.password_edit_text)
     EditText passwordEditText;
-    @BindView(R.id.passwordConfirmEditText)
+    @BindView(R.id.password_confirm_edit_text)
     EditText passwordConfirmEditText;
 
     @Override
