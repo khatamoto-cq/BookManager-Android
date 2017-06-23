@@ -77,5 +77,15 @@ public abstract class BaseActivity extends AppCompatActivity {
                 .show();
     }
 
+    public String getErrorMessage(int resource) {
+        return getResources().getString(resource);
+    }
 
+    public void showError(String message) {
+        this.showError(getResources().getString(R.string.validation_title), message);
+    }
+
+    public void showError(String title, String message) {
+        showDialog(title, message);
+    }
 }

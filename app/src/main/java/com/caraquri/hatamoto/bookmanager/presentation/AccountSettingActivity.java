@@ -71,11 +71,6 @@ public class AccountSettingActivity extends BaseActivity implements AccountSetti
     }
 
     @Override
-    public void showError(String message) {
-        showDialog(getResources().getString(R.string.validation_title), message);
-    }
-
-    @Override
     public void moveBookList() {
         moveMainActivity(MainActivity.BOOK_LIST_FRAGMENT);
     }
@@ -86,11 +81,6 @@ public class AccountSettingActivity extends BaseActivity implements AccountSetti
     }
 
     @Override
-    public String getErrorMessage(int resource) {
-        return getResources().getString(resource);
-    }
-
-    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_save, menu);
         return true;
@@ -98,9 +88,7 @@ public class AccountSettingActivity extends BaseActivity implements AccountSetti
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        switch (id) {
+        switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
                 break;
