@@ -25,6 +25,12 @@ public class AddBookActivity extends AbstractBookActivity implements AddBookCont
     }
 
     @Override
+    protected void onDestroy() {
+        addBookPresenter.detachView();
+        super.onDestroy();
+    }
+
+    @Override
     protected int getLayoutRes() {
         return R.layout.activity_add_book;
     }

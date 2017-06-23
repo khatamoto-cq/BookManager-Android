@@ -31,6 +31,12 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     }
 
     @Override
+    protected void onDestroy() {
+        loginPresenter.detachView();
+        super.onDestroy();
+    }
+
+    @Override
     protected int getLayoutRes() {
         return R.layout.activity_login;
     }

@@ -28,6 +28,12 @@ public class EditBookActivity extends AbstractBookActivity implements EditBookCo
     }
 
     @Override
+    protected void onDestroy() {
+        editBookPresenter.detachView();
+        super.onDestroy();
+    }
+
+    @Override
     protected int getLayoutRes() {
         return R.layout.activity_edit_book;
     }

@@ -59,6 +59,12 @@ public class AccountSettingActivity extends BaseActivity implements AccountSetti
     }
 
     @Override
+    protected void onDestroy() {
+        accountSettingPresenter.detachView();
+        super.onDestroy();
+    }
+
+    @Override
     public void setEntryFlg() {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean(getResources().getString(R.string.entry_flg), true);
