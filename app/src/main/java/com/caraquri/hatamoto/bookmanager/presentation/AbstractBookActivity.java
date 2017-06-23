@@ -151,12 +151,4 @@ public abstract class AbstractBookActivity extends BaseActivity {
         startActivity(intent);
         finish();
     }
-
-    public void showError(String message) {
-        showDialog(getString(R.string.validation_title), message);
-    }
-
-    public String getErrorMessage(int resource) {
-        return getResources().getString(resource);
-    }
 }
