@@ -42,10 +42,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         startActivity(activity, true);
     }
 
-    protected void startActivity(Class activity, boolean finish) {
+    protected void startActivity(Class activity, boolean isFinished) {
         Intent intent = new Intent(this, activity);
         startActivity(intent);
-        if (finish) {
+        if (isFinished) {
             finish();
         }
     }
