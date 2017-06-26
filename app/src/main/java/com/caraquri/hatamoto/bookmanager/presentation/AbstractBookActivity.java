@@ -118,9 +118,6 @@ public abstract class AbstractBookActivity extends BaseActivity {
     }
 
     public void moveMainActivity() {
-        Intent intent = new Intent(this, MainActivity.class);
-        intent.putExtra(MainActivity.EXTRA_LOAD_FRAGMENT, MainActivity.BOOK_LIST_FRAGMENT);
-        startActivity(intent);
         finish();
     }
 }

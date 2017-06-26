@@ -87,7 +87,7 @@ public class MainActivity extends BaseActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_add) {
-            startActivity(AddBookActivity.class);
+            startActivity(AddBookActivity.class, false);
         }
 
         return super.onOptionsItemSelected(item);
