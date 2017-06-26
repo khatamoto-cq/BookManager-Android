@@ -2,6 +2,7 @@ package com.caraquri.hatamoto.bookmanager.presentation;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 
 import com.caraquri.hatamoto.bookmanager.App;
 import com.caraquri.hatamoto.bookmanager.R;
@@ -49,7 +50,7 @@ public class AddBookActivity extends AbstractBookActivity implements RegisterBoo
     protected void clickSaveButton() {
         String name = nameEditTest.getText().toString();
         int price = 0;
-        if (!priceEditText.getText().toString().isEmpty()) {
+        if (!TextUtils.isEmpty(priceEditText.getText().toString())) {
             price = Integer.parseInt(priceEditText.getText().toString());
         }
         String purchaseDate = purchaseDateEditText.getText().toString();

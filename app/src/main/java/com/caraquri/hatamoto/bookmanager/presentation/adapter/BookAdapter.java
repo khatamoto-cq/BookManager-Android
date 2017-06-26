@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,7 +51,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
     public void onBindViewHolder(BookAdapter.ViewHolder holder, int position) {
         if (position < books.size()) {
             final Book book = books.get(position);
-            if (!book.getImageUrl().isEmpty()) {
+            if (!TextUtils.isEmpty(book.getImageUrl())) {
                 Glide.with(context).load(book.getImageUrl()).into(holder.imageView);
             }
             holder.name.setText(book.getName());

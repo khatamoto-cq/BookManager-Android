@@ -2,6 +2,7 @@ package com.caraquri.hatamoto.bookmanager.presentation;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 
 import com.bumptech.glide.Glide;
 import com.caraquri.hatamoto.bookmanager.App;
@@ -52,7 +53,7 @@ public class EditBookActivity extends AbstractBookActivity implements RegisterBo
     protected void clickSaveButton() {
         String name = nameEditTest.getText().toString();
         int price = 0;
-        if (!priceEditText.getText().toString().isEmpty()) {
+        if (!TextUtils.isEmpty(priceEditText.getText().toString())) {
             price = Integer.parseInt(priceEditText.getText().toString());
         }
         String purchaseDate = purchaseDateEditText.getText().toString();
@@ -61,7 +62,7 @@ public class EditBookActivity extends AbstractBookActivity implements RegisterBo
     }
 
     private void initControls(Book book) {
-        if (!book.getImageUrl().isEmpty()) {
+        if (!TextUtils.isEmpty(book.getImageUrl())) {
             Glide.with(this).load(book.getImageUrl()).into(imageView);
         }
         nameEditTest.setText(book.getName());

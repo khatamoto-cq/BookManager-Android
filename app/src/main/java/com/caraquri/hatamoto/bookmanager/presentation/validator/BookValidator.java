@@ -1,5 +1,7 @@
 package com.caraquri.hatamoto.bookmanager.presentation.validator;
 
+import android.text.TextUtils;
+
 import com.caraquri.hatamoto.bookmanager.R;
 import com.caraquri.hatamoto.bookmanager.domain.entity.Book;
 import com.caraquri.hatamoto.bookmanager.presentation.contract.RegisterBookContract;
@@ -18,13 +20,13 @@ public final class BookValidator {
     public List<String> validate(Book book) {
         List errors = new ArrayList<String>();
 
-        if (book.getName().isEmpty()) {
+        if (TextUtils.isEmpty(book.getName())) {
             errors.add(view.getErrorMessage(R.string.validation_book_name_require));
         }
         if (book.getPrice() == 0) {
             errors.add(view.getErrorMessage(R.string.validation_book_price_require));
         }
-        if (!book.getPurchaseDate().isEmpty() && !book.getPurchaseDate().matches("^[0-9]{4}/[01]?[0-9]/[0123]?[0-9]$")) {
+        if (!TextUtils.isEmpty(book.getPurchaseDate()) && !book.getPurchaseDate().matches("^[0-9]{4}/[01]?[0-9]/[0123]?[0-9]$")) {
             errors.add(view.getErrorMessage(R.string.validation_book_purchase_date_invalid));
         }
 
