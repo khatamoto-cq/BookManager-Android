@@ -62,6 +62,20 @@ public abstract class AbstractBookActivity extends BaseActivity {
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        super.onActivityResult(requestCode, resultCode, intent);
+
+        if (requestCode == RESULT_PICK_IMAGEFILE && resultCode == Activity.RESULT_OK) {
+            if (intent == null) {
+                return;
+            }
+
+            Uri uri = intent.getData();
+            imageView.setImageURI(uri);
+        }
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_save, menu);
         return true;
@@ -83,20 +97,6 @@ public abstract class AbstractBookActivity extends BaseActivity {
     protected abstract void onBackButtonClicked();
 
     protected abstract void onSaveButtonClicked();
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        super.onActivityResult(requestCode, resultCode, intent);
-
-        if (requestCode == RESULT_PICK_IMAGEFILE && resultCode == Activity.RESULT_OK) {
-            if (intent == null) {
-                return;
-            }
-
-            Uri uri = intent.getData();
-            imageView.setImageURI(uri);
-        }
-    }
 
     protected void showDatePicker(Context context, EditText sourceEditText) {
         Calendar cal = Calendar.getInstance(TimeZone.getDefault());

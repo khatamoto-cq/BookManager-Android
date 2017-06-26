@@ -52,14 +52,14 @@ public class AccountSettingActivity extends BaseActivity implements AccountSetti
     }
 
     @Override
-    protected int getLayoutRes() {
-        return R.layout.activity_account_setting;
-    }
-
-    @Override
     protected void onDestroy() {
         accountSettingPresenter.detachView();
         super.onDestroy();
+    }
+
+    @Override
+    protected int getLayoutRes() {
+        return R.layout.activity_account_setting;
     }
 
     @Override

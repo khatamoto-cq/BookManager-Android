@@ -27,14 +27,14 @@ public class SplashActivity extends BaseActivity implements SplashContract.View 
     }
 
     @Override
-    protected int getLayoutRes() {
-        return R.layout.activity_splash;
-    }
-
-    @Override
     protected void onStart() {
         super.onStart();
         splashPresenter.moveNextScreen();
+    }
+
+    @Override
+    protected int getLayoutRes() {
+        return R.layout.activity_splash;
     }
 
     @Override

@@ -38,20 +38,6 @@ public class BookListFragment extends BaseFragment implements BookListContract.V
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        App.getAppComponent(getActivity()).inject(this);
-        bookListPresenter.attachView(this);
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        init();
-        bookListPresenter.load();
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_book_list, container, false);
@@ -60,12 +46,8 @@ public class BookListFragment extends BaseFragment implements BookListContract.V
     }
 
     @Override
-    public void onDestroyView() {
-        bookListPresenter.detachView();
-        super.onDestroyView();
-    }
-
-    private void init() {
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         bookAdapter = new BookAdapter() {
             @Override
             protected void onItemClicked(@NonNull Book book) {
@@ -75,6 +57,20 @@ public class BookListFragment extends BaseFragment implements BookListContract.V
         };
         bookListRecyclerView.setHasFixedSize(true);
         bookListRecyclerView.setAdapter(bookAdapter);
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        App.getAppComponent(getActivity()).inject(this);
+        bookListPresenter.attachView(this);
+        bookListPresenter.load();
+    }
+
+    @Override
+    public void onDestroyView() {
+        bookListPresenter.detachView();
+        super.onDestroyView();
     }
 
     @Override
