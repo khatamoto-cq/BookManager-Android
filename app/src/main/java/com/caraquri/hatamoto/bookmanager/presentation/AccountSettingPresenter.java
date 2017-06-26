@@ -2,6 +2,7 @@ package com.caraquri.hatamoto.bookmanager.presentation;
 
 import android.text.TextUtils;
 
+import com.caraquri.hatamoto.bookmanager.R;
 import com.caraquri.hatamoto.bookmanager.presentation.contract.AccountSettingContract;
 import com.caraquri.hatamoto.bookmanager.presentation.validator.AccountValidator;
 import com.caraquri.hatamoto.bookmanager.util.mvp.BasePresenter;
@@ -29,7 +30,7 @@ public class AccountSettingPresenter extends BasePresenter<AccountSettingContrac
         AccountValidator validator = new AccountValidator(getView().getContext());
         List<String> errors = validator.validate(email, password, passwordConfirm);
         if (!errors.isEmpty()) {
-            getView().showError(TextUtils.join("\n", errors));
+            getView().showDialog(getView().getContext().getString(R.string.validation_title), TextUtils.join("\n", errors));
             return;
         }
 

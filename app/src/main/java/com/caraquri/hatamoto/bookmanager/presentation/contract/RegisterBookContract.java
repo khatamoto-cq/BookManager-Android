@@ -9,7 +9,7 @@ public interface RegisterBookContract {
     interface View extends MvpView {
         void moveMainActivity();
 
-        void showError(String message);
+        void showDialog(String title, String message);
 
         Context getContext();
     }

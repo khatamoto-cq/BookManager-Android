@@ -7,7 +7,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 
-import com.caraquri.hatamoto.bookmanager.R;
 import com.kaopiz.kprogresshud.KProgressHUD;
 
 import butterknife.ButterKnife;
@@ -51,20 +50,12 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
-    protected void showDialog(String title, String message) {
+    public void showDialog(String title, String message) {
         new AlertDialog.Builder(this)
                 .setTitle(title)
                 .setMessage(message)
                 .setPositiveButton("OK", null)
                 .show();
-    }
-
-    public void showError(String message) {
-        this.showError(getString(R.string.validation_title), message);
-    }
-
-    public void showError(String title, String message) {
-        showDialog(title, message);
     }
 
     public Context getContext() {

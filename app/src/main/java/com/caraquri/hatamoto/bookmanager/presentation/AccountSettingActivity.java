@@ -1,7 +1,6 @@
 package com.caraquri.hatamoto.bookmanager.presentation;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;

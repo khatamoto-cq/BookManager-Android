@@ -1,5 +1,6 @@
 package com.caraquri.hatamoto.bookmanager.presentation;
 
+import com.caraquri.hatamoto.bookmanager.R;
 import com.caraquri.hatamoto.bookmanager.domain.entity.Book;
 import com.caraquri.hatamoto.bookmanager.domain.repository.BookRepository;
 import com.caraquri.hatamoto.bookmanager.presentation.contract.BookListContract;
@@ -49,7 +50,7 @@ public class BookListPresenter extends BasePresenter<BookListContract.View> impl
                     @Override
                     public void onError(@NonNull Throwable e) {
                         getView().hideProgress();
-                        getView().showError("", e.getMessage());
+                        getView().showDialog(getView().getContext().getString(R.string.error_title), e.getMessage());
                     }
 
                     @Override

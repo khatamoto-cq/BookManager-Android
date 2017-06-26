@@ -20,7 +20,7 @@ public class BaseFragment extends Fragment {
                 .setDimAmount(0.5f);
     }
 
-    protected void showDialog(String title, String message) {
+    public void showDialog(String title, String message) {
         new AlertDialog.Builder(getActivity())
                 .setTitle(title)
                 .setMessage(message)

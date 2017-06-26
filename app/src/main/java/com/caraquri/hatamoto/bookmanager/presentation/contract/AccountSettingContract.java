@@ -10,7 +10,7 @@ public interface AccountSettingContract {
 
         boolean isEntried();
 
-        void showError(String message);
+        void showDialog(String title, String message);
 
         void moveBookList();
 

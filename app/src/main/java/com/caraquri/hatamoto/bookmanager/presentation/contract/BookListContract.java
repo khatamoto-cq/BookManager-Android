@@ -8,9 +8,13 @@ import com.caraquri.hatamoto.bookmanager.util.mvp.MvpView;
 public interface BookListContract {
     interface View extends MvpView {
         void showProgress();
+
         void hideProgress();
-        void showError(String title, String message);
+
+        void showDialog(String title, String message);
+
         void set(Book book);
+
         Context getContext();
     }
 

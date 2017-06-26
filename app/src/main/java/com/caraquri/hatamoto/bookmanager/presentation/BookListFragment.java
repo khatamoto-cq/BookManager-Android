@@ -93,11 +93,6 @@ public class BookListFragment extends BaseFragment implements BookListContract.V
     }
 
     @Override
-    public void showError(String title, String message) {
-        showDialog(title, message);
-    }
-
-    @Override
     public void set(Book book) {
         bookAdapter.set(book);
     }

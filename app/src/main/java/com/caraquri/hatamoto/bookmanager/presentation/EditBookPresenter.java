@@ -2,6 +2,7 @@ package com.caraquri.hatamoto.bookmanager.presentation;
 
 import android.text.TextUtils;
 
+import com.caraquri.hatamoto.bookmanager.R;
 import com.caraquri.hatamoto.bookmanager.domain.entity.Book;
 import com.caraquri.hatamoto.bookmanager.presentation.contract.RegisterBookContract;
 import com.caraquri.hatamoto.bookmanager.presentation.validator.BookValidator;
@@ -34,7 +35,7 @@ public class EditBookPresenter extends BasePresenter<RegisterBookContract.View> 
         BookValidator validator = new BookValidator(getView().getContext());
         List<String> errors = validator.validate(book);
         if (!errors.isEmpty()) {
-            getView().showError(TextUtils.join("\n", errors));
+            getView().showDialog(getView().getContext().getString(R.string.validation_title), TextUtils.join("\n", errors));
             return;
         }
 
