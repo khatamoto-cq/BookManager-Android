@@ -27,7 +27,7 @@ public class AddBookPresenter extends BasePresenter<RegisterBookContract.View> i
 
     @Override
     public void backScreen() {
-        getView().moveMainActivity();
+        getView().finish();
     }
 
     @Override
@@ -43,6 +43,6 @@ public class AddBookPresenter extends BasePresenter<RegisterBookContract.View> i
         // TODO: API実装時の登録処理
         Timber.d("[Log] 書籍を登録しました。");
 
-        getView().moveMainActivity();
+        getView().finish();
     }
 }

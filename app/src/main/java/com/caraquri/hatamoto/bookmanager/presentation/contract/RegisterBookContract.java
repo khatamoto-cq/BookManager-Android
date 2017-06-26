@@ -7,7 +7,7 @@ import com.caraquri.hatamoto.bookmanager.util.mvp.MvpView;
 
 public interface RegisterBookContract {
     interface View extends MvpView {
-        void moveMainActivity();
+        void finish();
 
         void showDialog(String title, String message);
 

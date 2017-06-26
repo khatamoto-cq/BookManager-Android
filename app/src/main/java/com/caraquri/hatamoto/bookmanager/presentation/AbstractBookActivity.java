@@ -111,7 +111,7 @@ public abstract class AbstractBookActivity extends BaseActivity {
         }, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH)).show();
     }
 
-    public void moveMainActivity() {
-        finish();
-    }
+//    public void moveMainActivity() {
+//        finish();
+//    }
 }
