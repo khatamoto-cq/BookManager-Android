@@ -90,6 +90,7 @@ public class MainActivity extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_add) {
             startActivity(AddBookActivity.class, false);
+            return true;
         }
 
         return super.onOptionsItemSelected(item);

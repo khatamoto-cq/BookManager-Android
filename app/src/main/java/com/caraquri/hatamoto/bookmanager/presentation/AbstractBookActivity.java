@@ -86,12 +86,13 @@ public abstract class AbstractBookActivity extends BaseActivity {
         switch (item.getItemId()) {
             case android.R.id.home:
                 onBackButtonClicked();
-                break;
+                return true;
             case R.id.action_save:
                 onSaveButtonClicked();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-
-        return super.onOptionsItemSelected(item);
     }
 
     protected abstract void onBackButtonClicked();

@@ -97,13 +97,14 @@ public class AccountSettingActivity extends BaseActivity implements AccountSetti
         switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
-                break;
+                return true;
             case R.id.action_save:
                 accountSettingPresenter.save(emailEditText.getText().toString(),
                         passwordEditText.getText().toString(),
                         passwordConfirmEditText.getText().toString());
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-
-        return super.onOptionsItemSelected(item);
     }
 }
