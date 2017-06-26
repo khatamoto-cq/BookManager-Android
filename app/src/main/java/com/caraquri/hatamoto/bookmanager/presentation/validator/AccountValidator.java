@@ -21,23 +21,23 @@ public final class AccountValidator {
         List errors = new ArrayList<String>();
 
         if (TextUtils.isEmpty(email)) {
-            errors.add(context.getResources().getString(R.string.validation_email_require));
+            errors.add(context.getString(R.string.validation_email_require));
         } else {
             if (!email.matches(Const.emailRegex)) {
-                errors.add(context.getResources().getString(R.string.validation_email_invalid));
+                errors.add(context.getString(R.string.validation_email_invalid));
             }
         }
 
         if (TextUtils.isEmpty(password)) {
-            errors.add(context.getResources().getString(R.string.validation_password_require));
+            errors.add(context.getString(R.string.validation_password_require));
         }
 
         if (TextUtils.isEmpty(password)) {
-            errors.add(context.getResources().getString(R.string.validation_password_confirm_require));
+            errors.add(context.getString(R.string.validation_password_confirm_require));
         }
 
         if (!TextUtils.isEmpty(password) && !TextUtils.isEmpty(passwordConfirm) && !password.equals(passwordConfirm)) {
-            errors.add(context.getResources().getString(R.string.validation_password_compare));
+            errors.add(context.getString(R.string.validation_password_compare));
         }
 
         return errors;

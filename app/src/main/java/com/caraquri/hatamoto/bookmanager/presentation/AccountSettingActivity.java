@@ -41,7 +41,7 @@ public class AccountSettingActivity extends BaseActivity implements AccountSetti
         accountSettingPresenter.attachView(this);
 
         sharedPreferences = getSharedPreferences(
-                getResources().getString(R.string.shared_prefference), Context.MODE_PRIVATE);
+                getString(R.string.shared_prefference), Context.MODE_PRIVATE);
 
         toolbar.setTitle(R.string.title_account_setting);
         toolbar.inflateMenu(R.menu.menu_save);
@@ -66,23 +66,25 @@ public class AccountSettingActivity extends BaseActivity implements AccountSetti
     @Override
     public void setEntryFlg() {
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putBoolean(getResources().getString(R.string.entry_flg), true);
+        editor.putBoolean(getString(R.string.entry_flg), true);
         editor.apply();
     }
 
     @Override
     public boolean isEntried() {
-        return sharedPreferences.getBoolean(getResources().getString(R.string.entry_flg), false);
+        return sharedPreferences.getBoolean(getString(R.string.entry_flg), false);
     }
 
     @Override
     public void moveBookList() {
-        moveMainActivity(MainActivity.BOOK_LIST_FRAGMENT);
+        startActivity(MainActivity.createIntent(this, MainActivity.BOOK_LIST_FRAGMENT));
+        finish();
     }
 
     @Override
     public void moveSetting() {
-        moveMainActivity(MainActivity.SETTING_FRAGMENT);
+        startActivity(MainActivity.createIntent(this, MainActivity.SETTING_FRAGMENT));
+        finish();
     }
 
     @Override
@@ -104,12 +106,5 @@ public class AccountSettingActivity extends BaseActivity implements AccountSetti
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    private void moveMainActivity(int moveScreen) {
-        Intent intent = new Intent(this, MainActivity.class);
-        intent.putExtra(MainActivity.EXTRA_LOAD_FRAGMENT, moveScreen);
-        startActivity(intent);
-        finish();
     }
 }

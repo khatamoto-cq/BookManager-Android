@@ -1,5 +1,7 @@
 package com.caraquri.hatamoto.bookmanager.presentation;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
@@ -67,10 +69,10 @@ public class MainActivity extends BaseActivity {
         Fragment loadFragment;
         if (currentFragment == BOOK_LIST_FRAGMENT) {
             loadFragment = BookListFragment.newInstance();
-            setTitle(getResources().getString(R.string.title_book_list));
+            setTitle(getString(R.string.title_book_list));
         } else {
             loadFragment = SettingFragment.newInstance();
-            setTitle(getResources().getString(R.string.title_setting));
+            setTitle(getString(R.string.title_setting));
         }
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
@@ -97,5 +99,10 @@ public class MainActivity extends BaseActivity {
     public boolean dispatchKeyEvent(KeyEvent event) {
         // MainActivityは戻るボタンを押すとアプリが終了されてしまうので戻るボタンを使用不可にする
         return event.getKeyCode() == KeyEvent.KEYCODE_BACK || super.dispatchKeyEvent(event);
+    }
+
+    public static Intent createIntent(Context context, int moveScreen) {
+        Intent intent = new Intent(context, MainActivity.class);
+        return intent.putExtra(MainActivity.EXTRA_LOAD_FRAGMENT, moveScreen);
     }
 }

@@ -40,8 +40,8 @@ public class SplashActivity extends BaseActivity implements SplashContract.View 
     @Override
     public boolean isEntried() {
         SharedPreferences sharedPreferences = getSharedPreferences(
-                getResources().getString(R.string.shared_prefference), Context.MODE_PRIVATE);
-        return sharedPreferences.getBoolean(getResources().getString(R.string.entry_flg), false);
+                getString(R.string.shared_prefference), Context.MODE_PRIVATE);
+        return sharedPreferences.getBoolean(getString(R.string.entry_flg), false);
     }
 
     @Override
