@@ -101,34 +101,8 @@ public abstract class AbstractBookActivity extends BaseActivity {
             }
 
             Uri uri = intent.getData();
-            try {
-                Bitmap bmp = getBitmapFromUri(uri);
-                imageView.setImageBitmap(bmp);
-            } catch (IOException e) {
-                showDialog(getString(R.string.error_title), getString(R.string.error_read_file));
-                Timber.e(e.getMessage());
-            }
+            imageView.setImageURI(uri);
         }
-    }
-
-    protected Bitmap getBitmapFromUri(Uri uri) throws IOException {
-        ParcelFileDescriptor parcelFileDescriptor = null;
-        Bitmap image = null;
-
-        try {
-            parcelFileDescriptor = getContentResolver().openFileDescriptor(uri, "r");
-            FileDescriptor fileDescriptor = parcelFileDescriptor.getFileDescriptor();
-            image = BitmapFactory.decodeFileDescriptor(fileDescriptor);
-        } catch (FileNotFoundException e) {
-            showDialog(getString(R.string.error_title), getString(R.string.error_file_not_found));
-            Timber.e(e.getMessage());
-        } finally {
-            if (parcelFileDescriptor != null) {
-                parcelFileDescriptor.close();
-            }
-        }
-
-        return image;
     }
 
     protected void showDatePicker(Context context, EditText sourceEditText) {
