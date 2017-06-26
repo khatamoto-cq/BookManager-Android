@@ -22,8 +22,6 @@ import butterknife.ButterKnife;
 
 public class BookListFragment extends BaseFragment implements BookListContract.View {
 
-    public static final String EXTRA_BOOK = "BookListFragment.EXTRA_BOOK";
-
     @Inject
     BookListPresenter bookListPresenter;
 
@@ -73,9 +71,7 @@ public class BookListFragment extends BaseFragment implements BookListContract.V
             @Override
             protected void onItemClicked(@NonNull Book book) {
                 super.onItemClicked(book);
-                Intent intent = new Intent(getActivity(), EditBookActivity.class);
-                intent.putExtra(BookListFragment.EXTRA_BOOK, book);
-                startActivity(intent);
+                startActivity(EditBookActivity.createIntent(getActivity(), book));
             }
         };
         bookListRecyclerView.setHasFixedSize(true);

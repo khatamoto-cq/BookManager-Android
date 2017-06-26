@@ -1,5 +1,7 @@
 package com.caraquri.hatamoto.bookmanager.presentation;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
@@ -14,6 +16,8 @@ import javax.inject.Inject;
 
 public class EditBookActivity extends AbstractBookActivity implements RegisterBookContract.View {
 
+    public static final String EXTRA_BOOK = "EditBookActivity.EXTRA_BOOK";
+
     @Inject
     EditBookPresenter editBookPresenter;
 
@@ -24,7 +28,7 @@ public class EditBookActivity extends AbstractBookActivity implements RegisterBo
         editBookPresenter.attachView(this);
         toolbar.setTitle(R.string.title_edit_book);
 
-        Book book = getIntent().getParcelableExtra(BookListFragment.EXTRA_BOOK);
+        Book book = getIntent().getParcelableExtra(EXTRA_BOOK);
         initControls(book);
     }
 
@@ -65,5 +69,10 @@ public class EditBookActivity extends AbstractBookActivity implements RegisterBo
             priceEditText.setText(String.valueOf(book.getPrice()));
         }
         purchaseDateEditText.setText(book.getPurchaseDate());
+    }
+
+    public static Intent createIntent(Context context, Book book) {
+        Intent intent = new Intent(context, EditBookActivity.class);
+        return intent.putExtra(EXTRA_BOOK, book);
     }
 }
