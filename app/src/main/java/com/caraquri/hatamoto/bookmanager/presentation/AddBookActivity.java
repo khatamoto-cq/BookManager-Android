@@ -37,17 +37,12 @@ public class AddBookActivity extends AbstractBookActivity implements RegisterBoo
     }
 
     @Override
-    protected AbstractBookActivity getBookActivity() {
-        return this;
-    }
-
-    @Override
-    protected void clickBackButton() {
+    protected void onBackButtonClicked() {
         addBookPresenter.backScreen();
     }
 
     @Override
-    protected void clickSaveButton() {
+    protected void onSaveButtonClicked() {
         String name = nameEditTest.getText().toString();
         int price = 0;
         if (!TextUtils.isEmpty(priceEditText.getText().toString())) {

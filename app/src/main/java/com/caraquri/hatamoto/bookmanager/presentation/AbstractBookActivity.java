@@ -63,7 +63,7 @@ public abstract class AbstractBookActivity extends BaseActivity {
 
         purchaseDateEditText.setOnFocusChangeListener((view, hasFocus) -> {
             if (hasFocus) {
-                showDatePicker(getBookActivity(), purchaseDateEditText);
+                showDatePicker(this, purchaseDateEditText);
             }
         });
     }
@@ -78,20 +78,18 @@ public abstract class AbstractBookActivity extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                clickBackButton();
+                onBackButtonClicked();
                 break;
             case R.id.action_save:
-                clickSaveButton();
+                onSaveButtonClicked();
         }
 
         return super.onOptionsItemSelected(item);
     }
 
-    protected abstract void clickBackButton();
+    protected abstract void onBackButtonClicked();
 
-    protected abstract void clickSaveButton();
-
-    protected abstract AbstractBookActivity getBookActivity();
+    protected abstract void onSaveButtonClicked();
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
