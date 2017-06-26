@@ -1,5 +1,7 @@
 package com.caraquri.hatamoto.bookmanager.presentation.contract;
 
+import android.content.Context;
+
 import com.caraquri.hatamoto.bookmanager.domain.entity.Book;
 import com.caraquri.hatamoto.bookmanager.util.mvp.MvpView;
 
@@ -9,7 +11,7 @@ public interface RegisterBookContract {
 
         void showError(String message);
 
-        String getResourceString(int resource);
+        Context getContext();
     }
 
     interface Action {

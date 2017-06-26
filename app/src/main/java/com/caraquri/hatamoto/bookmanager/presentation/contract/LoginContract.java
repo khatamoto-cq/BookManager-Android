@@ -1,12 +1,14 @@
 package com.caraquri.hatamoto.bookmanager.presentation.contract;
 
+import android.content.Context;
+
 import com.caraquri.hatamoto.bookmanager.util.mvp.MvpView;
 
 public interface LoginContract {
     interface View extends MvpView {
         void showError(String message);
         void moveBookList();
-        String getResourceString(int resource);
+        Context getContext();
     }
 
     interface Action {

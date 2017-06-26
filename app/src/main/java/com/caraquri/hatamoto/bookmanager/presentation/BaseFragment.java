@@ -1,5 +1,6 @@
 package com.caraquri.hatamoto.bookmanager.presentation;
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 
@@ -25,5 +26,9 @@ public class BaseFragment extends Fragment {
                 .setMessage(message)
                 .setPositiveButton("OK", null)
                 .show();
+    }
+
+    public Context getContext() {
+        return getActivity();
     }
 }

@@ -102,11 +102,6 @@ public class BookListFragment extends BaseFragment implements BookListContract.V
     }
 
     @Override
-    public String getResourceString(int resource) {
-        return getResources().getString(resource);
-    }
-
-    @Override
     public void set(Book book) {
         bookAdapter.set(book);
     }

@@ -1,5 +1,6 @@
 package com.caraquri.hatamoto.bookmanager.presentation;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -68,5 +69,9 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     public void showError(String title, String message) {
         showDialog(title, message);
+    }
+
+    public Context getContext() {
+        return this;
     }
 }
