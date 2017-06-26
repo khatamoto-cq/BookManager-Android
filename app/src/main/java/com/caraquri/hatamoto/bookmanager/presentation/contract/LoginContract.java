@@ -6,7 +6,7 @@ public interface LoginContract {
     interface View extends MvpView {
         void showError(String message);
         void moveBookList();
-        String getErrorMessage(int resource);
+        String getResourceString(int resource);
     }
 
     interface Action {

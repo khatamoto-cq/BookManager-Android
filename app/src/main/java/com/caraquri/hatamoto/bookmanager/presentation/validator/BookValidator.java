@@ -22,13 +22,13 @@ public final class BookValidator {
         List errors = new ArrayList<String>();
 
         if (TextUtils.isEmpty(book.getName())) {
-            errors.add(view.getErrorMessage(R.string.validation_book_name_require));
+            errors.add(view.getResourceString(R.string.validation_book_name_require));
         }
         if (book.getPrice() == 0) {
-            errors.add(view.getErrorMessage(R.string.validation_book_price_require));
+            errors.add(view.getResourceString(R.string.validation_book_price_require));
         }
         if (!TextUtils.isEmpty(book.getPurchaseDate()) && !book.getPurchaseDate().matches(Const.dateRegex)) {
-            errors.add(view.getErrorMessage(R.string.validation_book_purchase_date_invalid));
+            errors.add(view.getResourceString(R.string.validation_book_purchase_date_invalid));
         }
 
         return errors;

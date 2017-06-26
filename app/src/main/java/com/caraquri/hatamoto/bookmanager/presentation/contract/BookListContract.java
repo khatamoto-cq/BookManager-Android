@@ -8,7 +8,7 @@ public interface BookListContract {
         void showProgress();
         void hideProgress();
         void showError(String title, String message);
-        String getErrorMessage(int resource);
+        String getResourceString(int resource);
         void set(Book book);
     }
 

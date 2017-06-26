@@ -14,7 +14,7 @@ public interface AccountSettingContract {
 
         void moveSetting();
 
-        String getErrorMessage(int resource);
+        String getResourceString(int resource);
     }
 
     interface Action {

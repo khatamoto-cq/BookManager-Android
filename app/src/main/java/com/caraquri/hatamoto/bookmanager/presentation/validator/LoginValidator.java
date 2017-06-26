@@ -23,15 +23,15 @@ public final class LoginValidator {
         List errors = new ArrayList<String>();
 
         if (TextUtils.isEmpty(email)) {
-            errors.add(view.getErrorMessage(R.string.validation_email_require));
+            errors.add(view.getResourceString(R.string.validation_email_require));
         } else {
             if (!email.matches(Const.emailRegex)) {
-                errors.add(view.getErrorMessage(R.string.validation_email_invalid));
+                errors.add(view.getResourceString(R.string.validation_email_invalid));
             }
         }
 
         if (TextUtils.isEmpty(password)) {
-            errors.add(view.getErrorMessage(R.string.validation_password_require));
+            errors.add(view.getResourceString(R.string.validation_password_require));
         }
 
         return errors;

@@ -102,7 +102,7 @@ public class BookListFragment extends BaseFragment implements BookListContract.V
     }
 
     @Override
-    public String getErrorMessage(int resource) {
+    public String getResourceString(int resource) {
         return getResources().getString(resource);
     }
 

@@ -9,7 +9,7 @@ public interface RegisterBookContract {
 
         void showError(String message);
 
-        String getErrorMessage(int resource);
+        String getResourceString(int resource);
     }
 
     interface Action {
