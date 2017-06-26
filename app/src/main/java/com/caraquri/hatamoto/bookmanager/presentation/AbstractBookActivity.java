@@ -76,9 +76,7 @@ public abstract class AbstractBookActivity extends BaseActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        switch (id) {
+        switch (item.getItemId()) {
             case android.R.id.home:
                 clickBackButton();
                 break;
