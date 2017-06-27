@@ -27,8 +27,7 @@ public class AccountSettingPresenter extends BasePresenter<AccountSettingContrac
 
     @Override
     public void save(String email, String password, String passwordConfirm) {
-        AccountValidator validator = new AccountValidator(getView().getContext());
-        List<String> errors = validator.validate(email, password, passwordConfirm);
+        List<String> errors = AccountValidator.validate(getView().getContext(), email, password, passwordConfirm);
         if (!errors.isEmpty()) {
             getView().showDialog(getView().getContext().getString(R.string.validation_title), TextUtils.join("\n", errors));
             return;

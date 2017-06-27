@@ -32,8 +32,7 @@ public class EditBookPresenter extends BasePresenter<RegisterBookContract.View> 
 
     @Override
     public void save(Book book) {
-        BookValidator validator = new BookValidator(getView().getContext());
-        List<String> errors = validator.validate(book);
+        List<String> errors = BookValidator.validate(getView().getContext(), book);
         if (!errors.isEmpty()) {
             getView().showDialog(getView().getContext().getString(R.string.validation_title), TextUtils.join("\n", errors));
             return;

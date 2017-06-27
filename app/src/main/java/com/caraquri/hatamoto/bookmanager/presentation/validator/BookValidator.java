@@ -12,13 +12,7 @@ import java.util.List;
 
 public final class BookValidator {
 
-    private Context context;
-
-    public BookValidator(Context context){
-        this.context = context;
-    }
-
-    public List<String> validate(Book book) {
+    public static List<String> validate(Context context, Book book) {
         List errors = new ArrayList<String>();
 
         if (TextUtils.isEmpty(book.getName())) {

@@ -11,13 +11,7 @@ import java.util.List;
 
 public final class LoginValidator {
 
-    private Context context;
-
-    public LoginValidator(Context context) {
-        this.context = context;
-    }
-
-    public List<String> validate(String email, String password) {
+    public static List<String> validate(Context context, String email, String password) {
         List errors = new ArrayList<String>();
 
         if (TextUtils.isEmpty(email)) {
