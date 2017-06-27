@@ -82,7 +82,6 @@ public class AccountSettingActivity extends BaseActivity implements AccountSetti
 
     @Override
     public void moveSetting() {
-        startActivity(MainActivity.createIntent(this, MainActivity.SETTING_FRAGMENT));
         finish();
     }
 
