@@ -13,7 +13,7 @@ import butterknife.ButterKnife;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
-    protected static final int RESULT_PICK_IMAGEFILE = 101;
+    public static final int RESULT_PICK_IMAGEFILE = 101;
 
     protected KProgressHUD mProgress;
 
