@@ -63,7 +63,7 @@ public class AccountSettingActivity extends BaseActivity implements AccountSetti
     }
 
     @Override
-    public void setEntryFlg() {
+    public void entryInAccount() {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean(getString(R.string.entry_flg), true);
         editor.apply();

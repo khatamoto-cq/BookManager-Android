@@ -6,7 +6,7 @@ import com.caraquri.hatamoto.bookmanager.util.mvp.MvpView;
 
 public interface AccountSettingContract {
     interface View extends MvpView {
-        void setEntryFlg();
+        void entryInAccount();
 
         boolean isEntried();
 

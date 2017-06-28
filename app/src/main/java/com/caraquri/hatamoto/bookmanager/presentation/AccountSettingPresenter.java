@@ -36,7 +36,7 @@ public class AccountSettingPresenter extends BasePresenter<AccountSettingContrac
         // TODO: 登録処理(API)
 
         if (!getView().isEntried()) {
-            getView().setEntryFlg();
+            getView().entryInAccount();
             getView().moveBookList();
             return;
         }
