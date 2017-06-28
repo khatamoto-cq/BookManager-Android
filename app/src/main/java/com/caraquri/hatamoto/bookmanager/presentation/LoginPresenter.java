@@ -13,7 +13,6 @@ import javax.inject.Inject;
 
 import io.reactivex.Scheduler;
 
-
 public class LoginPresenter extends BasePresenter<LoginContract.View> implements LoginContract.Action {
 
     @Inject

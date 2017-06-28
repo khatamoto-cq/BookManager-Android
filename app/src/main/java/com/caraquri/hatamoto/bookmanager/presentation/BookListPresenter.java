@@ -15,7 +15,6 @@ import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
-import timber.log.Timber;
 
 public class BookListPresenter extends BasePresenter<BookListContract.View> implements BookListContract.Action {
 

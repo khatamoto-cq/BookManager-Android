@@ -13,7 +13,6 @@ import javax.inject.Inject;
 
 import io.reactivex.Scheduler;
 
-
 public class AccountSettingPresenter extends BasePresenter<AccountSettingContract.View>
         implements AccountSettingContract.Action {
 

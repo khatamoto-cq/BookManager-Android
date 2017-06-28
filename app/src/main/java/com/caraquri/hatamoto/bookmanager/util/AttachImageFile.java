@@ -8,7 +8,6 @@ import android.os.ParcelFileDescriptor;
 import android.widget.ImageView;
 
 import java.io.FileDescriptor;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import timber.log.Timber;
