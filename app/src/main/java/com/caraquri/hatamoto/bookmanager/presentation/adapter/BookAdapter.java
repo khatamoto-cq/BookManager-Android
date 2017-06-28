@@ -85,12 +85,11 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
         }
     }
 
-    public void set(List<Book> books) {
-        if (!books.isEmpty()) {
-            books.clear();
+    public void set(@NonNull List<Book> books) {
+        synchronized (lock) {
+            this.books.addAll(books);
+            notifyDataSetChanged();
         }
-        books.addAll(books);
-        notifyDataSetChanged();
     }
 
     public Book get(int position) {

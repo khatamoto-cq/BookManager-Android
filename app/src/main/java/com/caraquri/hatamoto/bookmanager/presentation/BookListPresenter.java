@@ -6,6 +6,8 @@ import com.caraquri.hatamoto.bookmanager.domain.repository.BookRepository;
 import com.caraquri.hatamoto.bookmanager.presentation.contract.BookListContract;
 import com.caraquri.hatamoto.bookmanager.util.mvp.BasePresenter;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import io.reactivex.Observer;
@@ -35,16 +37,15 @@ public class BookListPresenter extends BasePresenter<BookListContract.View> impl
         bookRepository.getBooks(1, "0-200")
                 .subscribeOn(scheduler)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<Book>() {
+                .subscribe(new Observer<List<Book>>() {
                     @Override
                     public void onSubscribe(@NonNull Disposable d) {
                         addDisposable(d);
                     }
 
                     @Override
-                    public void onNext(@NonNull Book book) {
-                        getView().set(book);
-                        Timber.d(book.toString());
+                    public void onNext(@NonNull List<Book> books) {
+                        getView().set(books);
                     }
 
                     @Override

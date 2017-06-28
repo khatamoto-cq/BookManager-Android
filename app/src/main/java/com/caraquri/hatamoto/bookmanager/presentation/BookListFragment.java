@@ -14,6 +14,8 @@ import com.caraquri.hatamoto.bookmanager.domain.entity.Book;
 import com.caraquri.hatamoto.bookmanager.presentation.adapter.BookAdapter;
 import com.caraquri.hatamoto.bookmanager.presentation.contract.BookListContract;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import butterknife.BindView;
@@ -88,7 +90,7 @@ public class BookListFragment extends BaseFragment implements BookListContract.V
     }
 
     @Override
-    public void set(Book book) {
-        bookAdapter.set(book);
+    public void set(List<Book> books) {
+        bookAdapter.set(books);
     }
 }
