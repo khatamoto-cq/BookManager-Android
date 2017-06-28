@@ -6,12 +6,12 @@ public interface SplashContract {
     interface View extends MvpView {
         boolean isEntried();
 
-        void moveAccountSetting();
+        void moveToAccountSetting();
 
-        void moveLogin();
+        void moveToLogin();
     }
 
     interface Action {
-        void moveNextScreen();
+        void moveToNextScreen();
     }
 }

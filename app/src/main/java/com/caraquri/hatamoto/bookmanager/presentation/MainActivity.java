@@ -102,8 +102,8 @@ public class MainActivity extends BaseActivity {
         return event.getKeyCode() == KeyEvent.KEYCODE_BACK || super.dispatchKeyEvent(event);
     }
 
-    public static Intent createIntent(Context context, int moveScreen) {
+    public static Intent createIntent(Context context, int moveToScreen) {
         Intent intent = new Intent(context, MainActivity.class);
-        return intent.putExtra(MainActivity.EXTRA_LOAD_FRAGMENT, moveScreen);
+        return intent.putExtra(MainActivity.EXTRA_LOAD_FRAGMENT, moveToScreen);
     }
 }

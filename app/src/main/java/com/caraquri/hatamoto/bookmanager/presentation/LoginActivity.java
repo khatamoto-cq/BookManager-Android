@@ -42,7 +42,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     }
 
     @Override
-    public void moveBookList() {
+    public void moveToBookList() {
         startActivity(MainActivity.class);
     }
 

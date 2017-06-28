@@ -35,6 +35,6 @@ public class LoginPresenter extends BasePresenter<LoginContract.View> implements
 
         // TODO: APIでログインしてトークンを保存
 
-        getView().moveBookList();
+        getView().moveToBookList();
     }
 }

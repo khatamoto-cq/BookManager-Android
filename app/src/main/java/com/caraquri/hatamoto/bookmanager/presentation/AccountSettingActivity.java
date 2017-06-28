@@ -75,13 +75,13 @@ public class AccountSettingActivity extends BaseActivity implements AccountSetti
     }
 
     @Override
-    public void moveBookList() {
+    public void moveToBookList() {
         startActivity(MainActivity.createIntent(this, MainActivity.BOOK_LIST_FRAGMENT));
         finish();
     }
 
     @Override
-    public void moveSetting() {
+    public void moveToSetting() {
         finish();
     }
 

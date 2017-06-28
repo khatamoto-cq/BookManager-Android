@@ -29,7 +29,7 @@ public class SplashActivity extends BaseActivity implements SplashContract.View 
     @Override
     protected void onStart() {
         super.onStart();
-        splashPresenter.moveNextScreen();
+        splashPresenter.moveToNextScreen();
     }
 
     @Override
@@ -45,12 +45,12 @@ public class SplashActivity extends BaseActivity implements SplashContract.View 
     }
 
     @Override
-    public void moveAccountSetting() {
+    public void moveToAccountSetting() {
         new Handler().postDelayed(() -> startActivity(AccountSettingActivity.class), DELAY);
     }
 
     @Override
-    public void moveLogin() {
+    public void moveToLogin() {
         new Handler().postDelayed(() -> startActivity(LoginActivity.class), DELAY);
     }
 }

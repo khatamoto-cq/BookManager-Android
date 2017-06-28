@@ -12,9 +12,9 @@ public interface AccountSettingContract {
 
         void showDialog(String title, String message);
 
-        void moveBookList();
+        void moveToBookList();
 
-        void moveSetting();
+        void moveToSetting();
 
         Context getContext();
     }

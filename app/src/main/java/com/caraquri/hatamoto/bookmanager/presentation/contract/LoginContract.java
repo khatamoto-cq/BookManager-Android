@@ -8,7 +8,7 @@ public interface LoginContract {
     interface View extends MvpView {
         void showDialog(String title, String message);
 
-        void moveBookList();
+        void moveToBookList();
 
         Context getContext();
     }

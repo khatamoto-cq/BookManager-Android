@@ -37,10 +37,10 @@ public class AccountSettingPresenter extends BasePresenter<AccountSettingContrac
 
         if (!getView().isEntried()) {
             getView().entryInAccount();
-            getView().moveBookList();
+            getView().moveToBookList();
             return;
         }
 
-        getView().moveSetting();
+        getView().moveToSetting();
     }
 }
