@@ -96,12 +96,6 @@ public class MainActivity extends BaseActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public boolean dispatchKeyEvent(KeyEvent event) {
-        // MainActivityは戻るボタンを押すとアプリが終了されてしまうので戻るボタンを使用不可にする
-        return event.getKeyCode() == KeyEvent.KEYCODE_BACK || super.dispatchKeyEvent(event);
-    }
-
     public static Intent createIntent(Context context, int moveToScreen) {
         Intent intent = new Intent(context, MainActivity.class);
         return intent.putExtra(EXTRA_LOAD_FRAGMENT, moveToScreen);
