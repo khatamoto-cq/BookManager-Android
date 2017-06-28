@@ -14,6 +14,6 @@ public interface LoginContract {
     }
 
     interface Action {
-        void logIn(String email, String password);
+        void login(String email, String password);
     }
 }
