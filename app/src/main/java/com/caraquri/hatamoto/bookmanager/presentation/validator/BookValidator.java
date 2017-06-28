@@ -21,7 +21,7 @@ public final class BookValidator {
         if (book.getPrice() == 0) {
             errors.add(context.getString(R.string.validation_book_price_require));
         }
-        if (!TextUtils.isEmpty(book.getPurchaseDate()) && !book.getPurchaseDate().matches(Const.dateRegex)) {
+        if (!TextUtils.isEmpty(book.getPurchaseDate()) && !book.getPurchaseDate().matches(Const.DATE_REGEX)) {
             errors.add(context.getString(R.string.validation_book_purchase_date_invalid));
         }
 

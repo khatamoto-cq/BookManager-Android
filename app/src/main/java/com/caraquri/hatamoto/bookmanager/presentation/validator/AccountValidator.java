@@ -16,7 +16,7 @@ public final class AccountValidator {
 
         if (TextUtils.isEmpty(email)) {
             errors.add(context.getString(R.string.validation_email_require));
-        } else if (!email.matches(Const.emailRegex)) {
+        } else if (!email.matches(Const.EMAIL_REGEX)) {
             errors.add(context.getString(R.string.validation_email_invalid));
         }
 
