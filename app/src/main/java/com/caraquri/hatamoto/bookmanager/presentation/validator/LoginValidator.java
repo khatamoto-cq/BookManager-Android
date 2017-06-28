@@ -16,10 +16,8 @@ public final class LoginValidator {
 
         if (TextUtils.isEmpty(email)) {
             errors.add(context.getString(R.string.validation_email_require));
-        } else {
-            if (!email.matches(Const.emailRegex)) {
-                errors.add(context.getString(R.string.validation_email_invalid));
-            }
+        } else if (!email.matches(Const.emailRegex)) {
+            errors.add(context.getString(R.string.validation_email_invalid));
         }
 
         if (TextUtils.isEmpty(password)) {
