@@ -99,19 +99,19 @@ public abstract class AbstractBookActivity extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                onBackButtonClicked();
+                onBackButtonClick();
                 return true;
             case R.id.action_save:
-                onSaveButtonClicked();
+                onSaveButtonClick();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
-    protected abstract void onBackButtonClicked();
+    protected abstract void onBackButtonClick();
 
-    protected abstract void onSaveButtonClicked();
+    protected abstract void onSaveButtonClick();
 
     protected void showDatePicker(Context context, EditText sourceEditText) {
         Calendar cal = Calendar.getInstance(TimeZone.getDefault());
