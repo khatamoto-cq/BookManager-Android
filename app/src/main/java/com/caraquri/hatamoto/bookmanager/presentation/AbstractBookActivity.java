@@ -16,6 +16,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 
@@ -70,7 +71,10 @@ public abstract class AbstractBookActivity extends BaseActivity {
 
         purchaseDateEditText.setOnFocusChangeListener((view, hasFocus) -> {
             if (hasFocus) {
-                showDatePicker(this, purchaseDateEditText);
+                Calendar calendar = Calendar.getInstance(TimeZone.getDefault());
+                showDatePicker(calendar, (datePicker, year, month, day) -> {
+                    updatePurchaseDate(calendar, year, month, day);
+                });
             }
         });
     }
@@ -113,15 +117,16 @@ public abstract class AbstractBookActivity extends BaseActivity {
 
     protected abstract void onSaveButtonClick();
 
-    protected void showDatePicker(Context context, EditText sourceEditText) {
-        Calendar cal = Calendar.getInstance(TimeZone.getDefault());
+    protected void showDatePicker(Calendar calendar, DatePickerDialog.OnDateSetListener listener) {
+        new DatePickerDialog(this, listener, calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
+    }
 
-        new DatePickerDialog(context, (datePicker, year, month, day) -> {
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd", Locale.JAPAN);
-            cal.set(Calendar.YEAR, year);
-            cal.set(Calendar.MONTH, month);
-            cal.set(Calendar.DAY_OF_MONTH, day);
-            sourceEditText.setText(sdf.format(cal.getTime()));
-        }, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH)).show();
+    protected void updatePurchaseDate(Calendar calendar, int year, int month, int day) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd", Locale.JAPAN);
+        calendar.set(Calendar.YEAR, year);
+        calendar.set(Calendar.MONTH, month);
+        calendar.set(Calendar.DAY_OF_MONTH, day);
+        purchaseDateEditText.setText(sdf.format(calendar.getTime()));
     }
 }
