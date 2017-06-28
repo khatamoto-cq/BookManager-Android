@@ -16,7 +16,7 @@ import javax.inject.Inject;
 
 public class EditBookActivity extends AbstractBookActivity implements RegisterBookContract.View {
 
-    public static final String EXTRA_BOOK = "EditBookActivity.EXTRA_BOOK";
+    private static final String EXTRA_BOOK = "EditBookActivity.EXTRA_BOOK";
 
     @Inject
     EditBookPresenter editBookPresenter;

@@ -18,7 +18,7 @@ import butterknife.BindView;
 
 public class MainActivity extends BaseActivity {
 
-    public final static String EXTRA_LOAD_FRAGMENT = "MainActivity.EXTRA_LOAD_FRAGMENT";
+    private final static String EXTRA_LOAD_FRAGMENT = "MainActivity.EXTRA_LOAD_FRAGMENT";
     public final static int BOOK_LIST_FRAGMENT = 0;
     public final static int SETTING_FRAGMENT = 1;
 
@@ -104,6 +104,6 @@ public class MainActivity extends BaseActivity {
 
     public static Intent createIntent(Context context, int moveToScreen) {
         Intent intent = new Intent(context, MainActivity.class);
-        return intent.putExtra(MainActivity.EXTRA_LOAD_FRAGMENT, moveToScreen);
+        return intent.putExtra(EXTRA_LOAD_FRAGMENT, moveToScreen);
     }
 }
