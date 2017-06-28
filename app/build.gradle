@@ -6,21 +6,6 @@ def versionMinor = 0
 def versionPatch = 1
 def packageName = "com.caraquri.hatamoto.bookmanager"
 
-def supportLibraryVersion = "26.0.0-alpha1"
-def constraintLayoutVersion = "1.0.2"
-def retrofitVersion = "2.3.0"
-def okHttpVersion = "3.8.1"
-def glideVersion = "4.0.0-RC0"
-def rxJavaVersion = "2.1.0"
-def rxAndroidVersion = "2.0.1"
-def daggerVersion = "2.11"
-def butterKnifeVersion = "8.6.0"
-def timberVersion = "4.5.1"
-def threeTenAbpVersion = "1.0.5"
-def lombokVersion = "1.16.16"
-def stethoVersion = "1.5.0"
-def leakCanary = "1.5.1"
-
 android {
     compileSdkVersion 26
     buildToolsVersion "26.0.0"
