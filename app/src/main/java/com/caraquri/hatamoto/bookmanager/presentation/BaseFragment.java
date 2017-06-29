@@ -1,9 +1,11 @@
 package com.caraquri.hatamoto.bookmanager.presentation;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 
+import com.caraquri.hatamoto.bookmanager.R;
 import com.kaopiz.kprogresshud.KProgressHUD;
 
 public class BaseFragment extends Fragment {

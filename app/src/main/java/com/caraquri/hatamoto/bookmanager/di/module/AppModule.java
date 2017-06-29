@@ -53,8 +53,8 @@ public class AppModule {
     }
 
     @Provides
-    BookRepository provideBookRepository() {
-        return new BookRepositoryImpl();
+    BookRepository provideBookRepository(ApiService service) {
+        return new BookRepositoryImpl(service);
     }
 
     @Provides
