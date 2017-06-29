@@ -42,8 +42,8 @@ public class App extends Application {
         }
     }
 
-    private void initializeStetho() {
-        BuildConfig.STETHO.init(this);
+    protected void initializeStetho() {
+        // releaseビルドではStethoを事項しない
     }
 
     private void initializeLeakCanary() {

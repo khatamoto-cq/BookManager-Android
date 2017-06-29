@@ -21,11 +21,9 @@ android {
     buildTypes {
         debug {
             testCoverageEnabled = true
-            buildConfigField "${packageName}.util.StethoHelper", 'STETHO', "new ${packageName}.util.RealStethoHelper()"
         }
         release {
             minifyEnabled false
-            buildConfigField "${packageName}.util.StethoHelper", 'STETHO', "new ${packageName}.util.FakeStethoHelper()"
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
