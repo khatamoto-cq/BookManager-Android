@@ -11,6 +11,8 @@ public interface LoginContract {
         void moveToBookList();
 
         Context getContext();
+
+        void saveAccessTokenAndUserId(String requestToken, int userId);
     }
 
     interface Action {

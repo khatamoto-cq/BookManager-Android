@@ -39,12 +39,6 @@ public class LoginPresenter extends BasePresenter<LoginContract.View> implements
             return;
         }
 
-        // TODO: APIでログインしてトークンを保存
-
-
-
-        Timber.d("[Log] APIにアクセスしてログインします");
-        // TODO: APIでログインしてトークンを保存
         accountRepository.login(new Account(email, password))
                 .subscribeOn(scheduler)
                 .observeOn(AndroidSchedulers.mainThread())
@@ -56,13 +50,14 @@ public class LoginPresenter extends BasePresenter<LoginContract.View> implements
 
                     @Override
                     public void onNext(@NonNull AccountResponse accountResponse) {
-                        Timber.d("[Log] Next: " + accountResponse.toString());
+                        getView().saveAccessTokenAndUserId(accountResponse.getRequestToken(), accountResponse.getUserId());
                     }
 
                     @Override
                     public void onError(@NonNull Throwable e) {
-                        Timber.d("[Log] onError: " + e.getMessage());
-                        getView().showDialog(getView().getContext().getString(R.string.error_title), "ログインできませんでした。");
+                        Timber.e(e.getMessage());
+                        getView().showDialog(getView().getContext().getString(R.string.error_title),
+                                getView().getContext().getString(R.string.error_login));
                     }
 
                     @Override
@@ -70,6 +65,5 @@ public class LoginPresenter extends BasePresenter<LoginContract.View> implements
                         getView().moveToBookList();
                     }
                 });
-
     }
 }
