@@ -15,11 +15,16 @@ import com.bumptech.glide.Glide;
 import com.caraquri.hatamoto.bookmanager.R;
 import com.caraquri.hatamoto.bookmanager.domain.entity.Book;
 
+import org.threeten.bp.LocalDateTime;
+import org.threeten.bp.format.DateTimeFormatter;
+import org.threeten.bp.format.DateTimeParseException;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import timber.log.Timber;
 
 public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
 
@@ -54,11 +59,22 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
             if (!TextUtils.isEmpty(book.getImageUrl())) {
                 Glide.with(context).load(book.getImageUrl()).into(holder.imageView);
             }
+
             holder.name.setText(book.getName());
+
             if (book.getPrice() > 0) {
                 holder.price.setText(context.getString(R.string.text_book_price, book.getPrice()));
             }
-            holder.date.setText(book.getPurchaseDate());
+
+            if (!TextUtils.isEmpty(book.getPurchaseDate())){
+                try {
+                    LocalDateTime dateTime = LocalDateTime.parse(book.getPurchaseDate(), DateTimeFormatter.RFC_1123_DATE_TIME);
+                    DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+                    holder.date.setText(dateTime.format(outputFormatter));
+                } catch (DateTimeParseException e) {
+                    Timber.e(e.getMessage());
+                }
+            }
         }
     }
 

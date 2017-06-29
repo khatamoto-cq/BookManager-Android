@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 
 import com.caraquri.hatamoto.bookmanager.data.api.ApiService;
+import com.caraquri.hatamoto.bookmanager.data.api.ApiServiceRequiredAuthentication;
 import com.caraquri.hatamoto.bookmanager.data.api.ServiceGenerator;
 import com.caraquri.hatamoto.bookmanager.data.repository.AccountRepositoryImpl;
 import com.caraquri.hatamoto.bookmanager.data.repository.BookRepositoryImpl;
@@ -15,6 +16,7 @@ import com.caraquri.hatamoto.bookmanager.presentation.BookListPresenter;
 import com.caraquri.hatamoto.bookmanager.presentation.EditBookPresenter;
 import com.caraquri.hatamoto.bookmanager.presentation.LoginPresenter;
 import com.caraquri.hatamoto.bookmanager.presentation.SplashPresenter;
+import com.caraquri.hatamoto.bookmanager.util.AuthenticationUtils;
 
 import javax.inject.Singleton;
 
@@ -48,12 +50,18 @@ public class AppModule {
     }
 
     @Provides
+    public ApiServiceRequiredAuthentication provideApiServiceRequiredAuthentication() {
+        String token = AuthenticationUtils.getRequestToken(application.getApplicationContext());
+        return ServiceGenerator.create(ApiServiceRequiredAuthentication.class, token);
+    }
+
+    @Provides
     AccountRepository provideAccountRepository(ApiService service) {
         return new AccountRepositoryImpl(service);
     }
 
     @Provides
-    BookRepository provideBookRepository(ApiService service) {
+    BookRepository provideBookRepository(ApiServiceRequiredAuthentication service) {
         return new BookRepositoryImpl(service);
     }
 
