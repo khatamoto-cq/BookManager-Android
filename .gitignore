@@ -19,8 +19,7 @@ out/
 # Gradle files
 .gradle/
 /*/build/
-build/generated
-build/android-profile/
+build/*
 
 # Signing files
 .signing/

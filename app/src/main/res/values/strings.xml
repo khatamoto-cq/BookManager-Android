@@ -1,3 +1,56 @@
 <resources>
-    <string name="app_name">BookManager-Android</string>
+    <!-- アプリ名 -->
+    <string name="app_name">書籍管理アプリ</string>
+
+    <!-- 画面タイトル -->
+    <string name="title_login">ログイン</string>
+    <string name="title_book_list">書籍一覧</string>
+    <string name="title_add_book">書籍追加</string>
+    <string name="title_edit_book">書籍編集</string>
+    <string name="title_setting">設定</string>
+    <string name="title_account_setting">アカウント設定</string>
+
+    <!-- タブ -->
+    <string name="tab_booklist">書籍一覧</string>
+    <string name="tab_setting">設定</string>
+
+    <!-- ラベル -->
+    <string name="label_loading_app">アプリケーションを起動中...</string>
+    <string name="label_email">メールアドレス</string>
+    <string name="label_password">パスワード</string>
+    <string name="label_password_confirm">パスワード確認</string>
+    <string name="label_book_name">書籍名</string>
+    <string name="label_book_price">金額</string>
+    <string name="label_book_purchase_day">購入日</string>
+
+    <!-- テキスト -->
+    <string name="text_book_price">%1$d円 + 税</string>
+
+    <!-- ボタン -->
+    <string name="button_setting_account">アカウント設定</string>
+    <string name="button_attach_image">画像添付ボタン</string>
+    <string name="button_login">ログイン</string>
+    <string name="button_add">追加</string>
+    <string name="button_back">戻る</string>
+    <string name="button_save">保存</string>
+
+    <!-- 設定 -->
+    <string name="shared_prefference">BookManagerPreferences</string>
+    <string name="entry_flg">EntryFlg</string>
+
+    <!-- バリデーションエラー -->
+    <string name="validation_title">入力エラー</string>
+    <string name="validation_email_require">・メールアドレスが入力されていません</string>
+    <string name="validation_email_invalid">・メールアドレスを正しい形式で入力してください</string>
+    <string name="validation_password_require">・パスワードが入力されていません</string>
+    <string name="validation_password_confirm_require">・パスワード(確認用)が入力されていません</string>
+    <string name="validation_password_compare">・パスワードとパスワード(確認用)が一致しません</string>
+    <string name="validation_book_name_require">・書籍名が入力されていません</string>
+    <string name="validation_book_price_require">・価格が入力されていません</string>
+    <string name="validation_book_purchase_date_invalid">・購入日を正しい日付で入力してください</string>
+
+    <!-- エラー -->
+    <string name="error_title">エラー</string>
+    <string name="error_read_file">ファイルを読み込み中にエラーが発生しました</string>
+    <string name="error_file_not_found">ファイルが見つかりませんでした</string>
 </resources>
