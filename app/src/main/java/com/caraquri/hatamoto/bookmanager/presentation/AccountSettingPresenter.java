@@ -16,7 +16,6 @@ import io.reactivex.Scheduler;
 public class AccountSettingPresenter extends BasePresenter<AccountSettingContract.View>
         implements AccountSettingContract.Action {
 
-    @Inject
     Scheduler scheduler;
 
     public AccountSettingPresenter(Scheduler scheduler) {

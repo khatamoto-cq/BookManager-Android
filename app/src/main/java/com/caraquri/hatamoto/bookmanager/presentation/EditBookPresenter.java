@@ -17,7 +17,6 @@ import timber.log.Timber;
 
 public class EditBookPresenter extends BasePresenter<RegisterBookContract.View> implements RegisterBookContract.Action {
 
-    @Inject
     Scheduler scheduler;
 
     public EditBookPresenter(Scheduler scheduler) {

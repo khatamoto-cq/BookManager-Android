@@ -18,10 +18,8 @@ import io.reactivex.disposables.Disposable;
 
 public class BookListPresenter extends BasePresenter<BookListContract.View> implements BookListContract.Action {
 
-    @Inject
     Scheduler scheduler;
-
-    @Inject
+    
     BookRepository bookRepository;
 
     public BookListPresenter(Scheduler scheduler, BookRepository bookRepository) {

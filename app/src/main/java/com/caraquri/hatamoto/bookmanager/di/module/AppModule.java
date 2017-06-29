@@ -39,7 +39,7 @@ public class AppModule {
     }
 
     @Provides
-    BookRepository providebookRepository() {
+    BookRepository provideBookRepository() {
         return new BookRepositoryImpl();
     }
 
