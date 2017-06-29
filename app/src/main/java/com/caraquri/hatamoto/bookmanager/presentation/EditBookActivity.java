@@ -3,7 +3,6 @@ package com.caraquri.hatamoto.bookmanager.presentation;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
@@ -19,15 +18,17 @@ import com.caraquri.hatamoto.bookmanager.App;
 import com.caraquri.hatamoto.bookmanager.R;
 import com.caraquri.hatamoto.bookmanager.domain.entity.Book;
 import com.caraquri.hatamoto.bookmanager.presentation.contract.RegisterBookContract;
-import com.caraquri.hatamoto.bookmanager.util.AttachImageFile;
 import com.caraquri.hatamoto.bookmanager.util.BookActivityUtils;
+import com.caraquri.hatamoto.bookmanager.util.ImageUtils;
 
+import java.io.IOException;
 import java.util.Calendar;
 import java.util.TimeZone;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
+import timber.log.Timber;
 
 public class EditBookActivity extends BaseActivity implements RegisterBookContract.View {
 
@@ -96,8 +97,13 @@ public class EditBookActivity extends BaseActivity implements RegisterBookContra
                 return;
             }
 
-            Uri uri = intent.getData();
-            new AttachImageFile(this, imageView, uri).run();
+            runOnUiThread(() -> {
+                try {
+                    imageView.setImageBitmap(ImageUtils.getBitmapFromUri(this, intent.getData()));
+                } catch (IOException e) {
+                    Timber.d(e.getMessage());
+                }
+            });
         }
     }
 
