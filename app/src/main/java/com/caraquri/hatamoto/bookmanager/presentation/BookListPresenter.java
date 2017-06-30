@@ -15,7 +15,6 @@ import io.reactivex.disposables.Disposable;
 public class BookListPresenter extends BasePresenter<BookListContract.View> implements BookListContract.Action {
 
     Scheduler scheduler;
-    
     BookRepository bookRepository;
 
     public BookListPresenter(Scheduler scheduler, BookRepository bookRepository) {

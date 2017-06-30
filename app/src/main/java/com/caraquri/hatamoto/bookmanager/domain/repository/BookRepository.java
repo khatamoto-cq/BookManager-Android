@@ -10,6 +10,8 @@ import io.reactivex.Single;
 
 public interface BookRepository {
     Observable<BookResult> getBooks(int userId, String page);
+
     Single<BookResponse> addBook(AddBook book);
+
     Single<BookResponse> editBook(EditBook book);
 }

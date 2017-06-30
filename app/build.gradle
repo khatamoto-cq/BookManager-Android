@@ -73,8 +73,8 @@ dependencies {
     compile "com.kaopiz:kprogresshud:1.0.5"
 
     // Debug
-    compile "com.facebook.stetho:stetho:${stethoVersion}"
-    compile "com.facebook.stetho:stetho-okhttp3:${stethoVersion}"
+    debugCompile "com.facebook.stetho:stetho:${stethoVersion}"
+    debugCompile "com.facebook.stetho:stetho-okhttp3:${stethoVersion}"
     debugCompile "com.squareup.leakcanary:leakcanary-android:${leakCanary}"
     releaseCompile "com.squareup.leakcanary:leakcanary-android-no-op:${leakCanary}"
     testCompile "com.squareup.leakcanary:leakcanary-android-no-op:${leakCanary}"

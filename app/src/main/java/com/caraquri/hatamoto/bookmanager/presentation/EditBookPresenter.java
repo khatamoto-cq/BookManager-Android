@@ -13,8 +13,6 @@ import com.caraquri.hatamoto.bookmanager.util.mvp.BasePresenter;
 
 import java.util.List;
 
-import javax.inject.Inject;
-
 import io.reactivex.Scheduler;
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -24,9 +22,7 @@ import timber.log.Timber;
 
 public class EditBookPresenter extends BasePresenter<RegisterBookContract.View> implements RegisterBookContract.Action {
 
-    @Inject
     Scheduler scheduler;
-    @Inject
     BookRepository bookRepository;
 
     public EditBookPresenter(Scheduler scheduler, BookRepository bookRepository) {

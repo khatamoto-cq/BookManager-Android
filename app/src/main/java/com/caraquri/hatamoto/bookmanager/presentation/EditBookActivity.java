@@ -23,8 +23,6 @@ import com.caraquri.hatamoto.bookmanager.util.BookActivityUtils;
 import com.caraquri.hatamoto.bookmanager.util.DateUtils;
 import com.caraquri.hatamoto.bookmanager.util.ImageUtils;
 
-import org.w3c.dom.Text;
-
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.TimeZone;

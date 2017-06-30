@@ -6,7 +6,7 @@ import com.caraquri.hatamoto.bookmanager.domain.entity.AccountResponse;
 import io.reactivex.Single;
 
 public interface AccountRepository {
-    public Single<AccountResponse> login(Account account);
+    Single<AccountResponse> login(Account account);
 
-    public Single<AccountResponse> create(Account account);
+    Single<AccountResponse> create(Account account);
 }

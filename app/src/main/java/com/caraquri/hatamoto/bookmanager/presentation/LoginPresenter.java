@@ -1,6 +1,5 @@
 package com.caraquri.hatamoto.bookmanager.presentation;
 
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
 import com.caraquri.hatamoto.bookmanager.R;
@@ -13,7 +12,6 @@ import com.caraquri.hatamoto.bookmanager.util.mvp.BasePresenter;
 
 import java.util.List;
 
-import io.reactivex.Observer;
 import io.reactivex.Scheduler;
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;

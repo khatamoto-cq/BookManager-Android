@@ -10,7 +10,6 @@ import com.caraquri.hatamoto.bookmanager.domain.repository.BookRepository;
 import com.caraquri.hatamoto.bookmanager.presentation.contract.RegisterBookContract;
 import com.caraquri.hatamoto.bookmanager.presentation.validator.BookValidator;
 import com.caraquri.hatamoto.bookmanager.util.AuthenticationUtils;
-import com.caraquri.hatamoto.bookmanager.util.ImageUtils;
 import com.caraquri.hatamoto.bookmanager.util.mvp.BasePresenter;
 
 import java.util.List;
