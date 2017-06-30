@@ -1,6 +1,5 @@
 package com.caraquri.hatamoto.bookmanager.data.api;
 
-
 import java.io.IOException;
 
 import okhttp3.Interceptor;

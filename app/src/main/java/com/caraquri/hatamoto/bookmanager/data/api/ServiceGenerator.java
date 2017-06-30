@@ -29,39 +29,36 @@ public class ServiceGenerator {
             .readTimeout(30, TimeUnit.SECONDS);
 
     public static <S> S create(Class<S> serviceClass) {
-
-        HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
-        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-        httpClient.addInterceptor(loggingInterceptor);
-        httpClient.addNetworkInterceptor(new StethoInterceptor());
-
-        builer.addConverterFactory(GsonConverterFactory.create(gson))
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .baseUrl(apiBaseUrl)
-                .client(httpClient.build());
-
+        initHttpClient();
+        initBuilder();
         retrofit = builer.build();
 
         return retrofit.create(serviceClass);
     }
 
     public static <S> S create(Class<S> serviceClass, String requestToken) {
-        String credentials = null;
-
         if (!TextUtils.isEmpty(requestToken)) {
             httpClient.addInterceptor(new AuthenticationInterceptor(requestToken));
         }
 
+        initHttpClient();
+        initBuilder();
+        retrofit = builer.build();
+
+        return retrofit.create(serviceClass);
+    }
+
+    private static void initHttpClient() {
         HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         httpClient.addInterceptor(loggingInterceptor);
         httpClient.addNetworkInterceptor(new StethoInterceptor());
+    }
 
+    private static void  initBuilder() {
         builer.addConverterFactory(GsonConverterFactory.create(gson))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .baseUrl(apiBaseUrl)
                 .client(httpClient.build());
-
-        return retrofit.create(serviceClass);
     }
 }
