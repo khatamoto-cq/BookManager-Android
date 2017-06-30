@@ -7,7 +7,7 @@ import com.caraquri.hatamoto.bookmanager.domain.repository.AccountRepository;
 
 import javax.inject.Inject;
 
-import io.reactivex.Observable;
+import io.reactivex.Single;
 
 public class AccountRepositoryImpl implements AccountRepository {
     @Inject
@@ -18,12 +18,12 @@ public class AccountRepositoryImpl implements AccountRepository {
     }
 
     @Override
-    public Observable<AccountResponse> login(Account account) {
+    public Single<AccountResponse> login(Account account) {
         return service.login(account);
     }
 
     @Override
-    public Observable<AccountResponse> create(Account account) {
+    public Single<AccountResponse> create(Account account) {
         return service.signup(account);
     }
 }

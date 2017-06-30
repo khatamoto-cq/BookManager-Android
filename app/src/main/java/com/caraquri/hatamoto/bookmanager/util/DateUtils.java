@@ -1,6 +1,5 @@
 package com.caraquri.hatamoto.bookmanager.util;
 
-
 import org.threeten.bp.LocalDateTime;
 import org.threeten.bp.format.DateTimeFormatter;
 import org.threeten.bp.format.DateTimeParseException;
@@ -14,7 +13,7 @@ public class DateUtils {
             DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
             return dateTime.format(outputFormatter);
         } catch (DateTimeParseException e) {
-            Timber.e("Can't Format: " + e.getMessage());
+            Timber.e("can't change format: " + e.getMessage());
             return date;
         }
     }

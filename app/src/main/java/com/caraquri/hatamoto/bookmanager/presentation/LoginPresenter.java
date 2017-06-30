@@ -15,6 +15,7 @@ import java.util.List;
 
 import io.reactivex.Observer;
 import io.reactivex.Scheduler;
+import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import timber.log.Timber;
@@ -42,27 +43,23 @@ public class LoginPresenter extends BasePresenter<LoginContract.View> implements
         accountRepository.login(new Account(email, password))
                 .subscribeOn(scheduler)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<AccountResponse>() {
+                .subscribe(new SingleObserver<AccountResponse>() {
                     @Override
-                    public void onSubscribe(@NonNull Disposable d) {
+                    public void onSubscribe(@io.reactivex.annotations.NonNull Disposable d) {
                         addDisposable(d);
                     }
 
                     @Override
-                    public void onNext(@NonNull AccountResponse accountResponse) {
+                    public void onSuccess(@io.reactivex.annotations.NonNull AccountResponse accountResponse) {
                         getView().saveAccessTokenAndUserId(accountResponse.getRequestToken(), accountResponse.getUserId());
+                        getView().moveToBookList();
                     }
 
                     @Override
-                    public void onError(@NonNull Throwable e) {
+                    public void onError(@io.reactivex.annotations.NonNull Throwable e) {
                         Timber.e(e.getMessage());
                         getView().showDialog(getView().getContext().getString(R.string.error_title),
                                 getView().getContext().getString(R.string.error_login));
-                    }
-
-                    @Override
-                    public void onComplete() {
-                        getView().moveToBookList();
                     }
                 });
     }

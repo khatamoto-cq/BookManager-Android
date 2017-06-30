@@ -16,6 +16,8 @@ public interface AccountSettingContract {
 
         void moveToSetting();
 
+        void saveAccessTokenAndUserId(String requestToken, int userId);
+
         Context getContext();
     }
 
