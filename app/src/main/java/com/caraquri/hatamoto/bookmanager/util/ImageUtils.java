@@ -42,19 +42,21 @@ public class ImageUtils {
             return "";
         }
 
-        ByteArrayOutputStream byteArray = null;
+        ByteArrayOutputStream stream = null;
 
         try {
-            byteArray = new ByteArrayOutputStream();
-            byte[] bytes = byteArray.toByteArray();
+            stream = new ByteArrayOutputStream();
+            Bitmap bitmap = bitmapDrawable.getBitmap();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+            byte[] bytes = stream.toByteArray();
 
             return Base64.encodeToString(bytes, Base64.DEFAULT);
         } catch (RuntimeException e) {
             Timber.e(e.getMessage());
         } finally {
-            if (byteArray != null) {
+            if (stream != null) {
                 try {
-                    byteArray.close();
+                    stream.close();
                 } catch (IOException e) {
                     Timber.e(e.getMessage());
                 }

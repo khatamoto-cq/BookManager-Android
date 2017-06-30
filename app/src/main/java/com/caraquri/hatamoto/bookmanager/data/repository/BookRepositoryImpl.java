@@ -30,6 +30,6 @@ public class BookRepositoryImpl implements BookRepository {
 
     @Override
     public Single<BookResponse> editBook(EditBook book) {
-        return null;
+        return service.editBook(book, book.getId());
     }
 }

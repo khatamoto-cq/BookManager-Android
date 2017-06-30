@@ -23,6 +23,8 @@ import com.caraquri.hatamoto.bookmanager.util.BookActivityUtils;
 import com.caraquri.hatamoto.bookmanager.util.DateUtils;
 import com.caraquri.hatamoto.bookmanager.util.ImageUtils;
 
+import org.w3c.dom.Text;
+
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.TimeZone;
@@ -52,6 +54,8 @@ public class EditBookActivity extends BaseActivity implements RegisterBookContra
     @Inject
     EditBookPresenter editBookPresenter;
 
+    private Book book;
+
     @Override
     protected void init(@Nullable Bundle savedInstanceState) {
         super.init(savedInstanceState);
@@ -60,7 +64,7 @@ public class EditBookActivity extends BaseActivity implements RegisterBookContra
         toolbar.setTitle(R.string.title_edit_book);
         BookActivityUtils.buildToolbar(this, toolbar);
 
-        Book book = getIntent().getParcelableExtra(EXTRA_BOOK);
+        book = getIntent().getParcelableExtra(EXTRA_BOOK);
         initControls(book);
 
         attachButton.setOnClickListener(view -> {
@@ -136,14 +140,15 @@ public class EditBookActivity extends BaseActivity implements RegisterBookContra
     }
 
     private void onSaveButtonClick() {
-        String name = nameEditTest.getText().toString();
-        int price = 0;
+        book.setName(nameEditTest.getText().toString());
         if (!TextUtils.isEmpty(priceEditText.getText().toString())) {
-            price = Integer.parseInt(priceEditText.getText().toString());
+            book.setPrice(Integer.parseInt(priceEditText.getText().toString()));
         }
-        String purchaseDate = purchaseDateEditText.getText().toString();
+        if (!TextUtils.isEmpty(purchaseDateEditText.getText().toString())) {
+            book.setPurchaseDate(DateUtils.getFormatedDate(purchaseDateEditText.getText().toString()));
+        }
 
-        editBookPresenter.save(new Book(name, price, purchaseDate));
+        editBookPresenter.save(book);
     }
 
     private void initControls(Book book) {

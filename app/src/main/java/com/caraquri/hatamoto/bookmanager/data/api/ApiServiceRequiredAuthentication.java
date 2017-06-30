@@ -10,7 +10,9 @@ import io.reactivex.Single;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
+import retrofit2.http.PATCH;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface ApiServiceRequiredAuthentication {
@@ -23,6 +25,6 @@ public interface ApiServiceRequiredAuthentication {
     Single<BookResponse> addBook(@Body AddBook book);
 
     @Headers( "Content-Type: application/json")
-    @POST("books")
-    Single<BookResponse> editBook(@Body EditBook book);
+    @PATCH("books/{id}")
+    Single<BookResponse> editBook(@Body EditBook book, @Path("id") int id);
 }

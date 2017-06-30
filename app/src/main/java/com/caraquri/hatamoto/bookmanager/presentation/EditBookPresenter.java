@@ -50,28 +50,26 @@ public class EditBookPresenter extends BasePresenter<RegisterBookContract.View> 
         EditBook editBook = new EditBook(book);
         editBook.setImageData(getView().getBase64EncordedImage());
 
-        Timber.d(editBook.toString());
-        Timber.d(scheduler.toString());
-//        bookRepository.editBook(editBook)
-//                .subscribeOn(scheduler)
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(new SingleObserver<BookResponse>() {
-//                    @Override
-//                    public void onSubscribe(@NonNull Disposable d) {
-//                        addDisposable(d);
-//                    }
-//
-//                    @Override
-//                    public void onSuccess(@NonNull BookResponse bookResponse) {
-//                        getView().finish();
-//                    }
-//
-//                    @Override
-//                    public void onError(@NonNull Throwable e) {
-//                        Timber.e(e.getMessage());
-//                        getView().showDialog(getView().getContext().getString(R.string.error_title),
-//                                getView().getContext().getString(R.string.error_networking));
-//                    }
-//                });
+        bookRepository.editBook(editBook)
+                .subscribeOn(scheduler)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<BookResponse>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
+                        addDisposable(d);
+                    }
+
+                    @Override
+                    public void onSuccess(@NonNull BookResponse bookResponse) {
+                        getView().finish();
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        Timber.e(e.getMessage());
+                        getView().showDialog(getView().getContext().getString(R.string.error_title),
+                                getView().getContext().getString(R.string.error_networking));
+                    }
+                });
     }
 }
