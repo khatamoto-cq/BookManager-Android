@@ -38,7 +38,6 @@ public class BookListPresenter extends BasePresenter<BookListContract.View> impl
 
                     @Override
                     public void onNext(@NonNull BookResult bookResult) {
-
                         getView().set(bookResult.getBooks());
                     }
 
