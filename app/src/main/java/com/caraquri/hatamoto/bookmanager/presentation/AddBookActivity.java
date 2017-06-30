@@ -2,6 +2,7 @@ package com.caraquri.hatamoto.bookmanager.presentation;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
@@ -118,6 +119,19 @@ public class AddBookActivity extends BaseActivity implements RegisterBookContrac
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    public String getBase64EncordedImage() {
+        try {
+            BitmapDrawable drawable = (BitmapDrawable) imageView.getDrawable();
+            return ImageUtils.encodeBase64(drawable.getBitmap());
+        } catch (RuntimeException e) {
+            Timber.e(e.getMessage());
+        } catch (IOException e) {
+            Timber.e(e.getMessage());
+        }
+
+        return "";
     }
 
     private void onSaveButtonClick() {

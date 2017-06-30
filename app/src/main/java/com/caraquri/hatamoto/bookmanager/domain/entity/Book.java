@@ -16,10 +16,14 @@ import lombok.ToString;
 @ToString
 public class Book implements Parcelable {
     private int id;
+
     @SerializedName("image_url")
     private String imageUrl;
+
     private String name;
+
     private int price;
+
     @SerializedName("purchase_date")
     private String purchaseDate;
 

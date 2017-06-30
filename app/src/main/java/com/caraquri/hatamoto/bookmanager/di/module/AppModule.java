@@ -81,8 +81,8 @@ public class AppModule {
     }
 
     @Provides
-    AddBookPresenter provideAddBookPresenter(Scheduler scheduler) {
-        return new AddBookPresenter(scheduler);
+    AddBookPresenter provideAddBookPresenter(Scheduler scheduler, BookRepository bookRepository) {
+        return new AddBookPresenter(scheduler, bookRepository);
     }
 
     @Provides

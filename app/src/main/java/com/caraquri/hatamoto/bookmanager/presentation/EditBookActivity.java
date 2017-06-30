@@ -127,6 +127,11 @@ public class EditBookActivity extends BaseActivity implements RegisterBookContra
         }
     }
 
+    @Override
+    public String getBase64EncordedImage() {
+        return null;
+    }
+
     private void onSaveButtonClick() {
         String name = nameEditTest.getText().toString();
         int price = 0;

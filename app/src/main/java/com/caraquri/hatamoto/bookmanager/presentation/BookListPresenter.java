@@ -1,22 +1,16 @@
 package com.caraquri.hatamoto.bookmanager.presentation;
 
 import com.caraquri.hatamoto.bookmanager.R;
-import com.caraquri.hatamoto.bookmanager.domain.entity.Book;
-import com.caraquri.hatamoto.bookmanager.domain.entity.BookResponse;
+import com.caraquri.hatamoto.bookmanager.domain.entity.BookResult;
 import com.caraquri.hatamoto.bookmanager.domain.repository.BookRepository;
 import com.caraquri.hatamoto.bookmanager.presentation.contract.BookListContract;
 import com.caraquri.hatamoto.bookmanager.util.mvp.BasePresenter;
-
-import java.util.List;
-
-import javax.inject.Inject;
 
 import io.reactivex.Observer;
 import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
-import timber.log.Timber;
 
 public class BookListPresenter extends BasePresenter<BookListContract.View> implements BookListContract.Action {
 
@@ -36,16 +30,16 @@ public class BookListPresenter extends BasePresenter<BookListContract.View> impl
         bookRepository.getBooks(getView().getLoginUserId(), "0-200")
                 .subscribeOn(scheduler)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<BookResponse>() {
+                .subscribe(new Observer<BookResult>() {
                     @Override
                     public void onSubscribe(@NonNull Disposable d) {
                         addDisposable(d);
                     }
 
                     @Override
-                    public void onNext(@NonNull BookResponse bookResponse) {
+                    public void onNext(@NonNull BookResult bookResult) {
 
-                        getView().set(bookResponse.getBooks());
+                        getView().set(bookResult.getBooks());
                     }
 
                     @Override

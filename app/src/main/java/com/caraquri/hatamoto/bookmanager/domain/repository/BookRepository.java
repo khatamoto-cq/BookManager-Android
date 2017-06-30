@@ -1,12 +1,15 @@
 package com.caraquri.hatamoto.bookmanager.domain.repository;
 
-import com.caraquri.hatamoto.bookmanager.domain.entity.Book;
+import com.caraquri.hatamoto.bookmanager.domain.entity.AddBook;
 import com.caraquri.hatamoto.bookmanager.domain.entity.BookResponse;
-
-import java.util.List;
+import com.caraquri.hatamoto.bookmanager.domain.entity.BookResult;
+import com.caraquri.hatamoto.bookmanager.domain.entity.EditBook;
 
 import io.reactivex.Observable;
+import io.reactivex.Single;
 
 public interface BookRepository {
-    Observable<BookResponse> getBooks(int userId, String page);
+    Observable<BookResult> getBooks(int userId, String page);
+    Single<BookResponse> addBook(AddBook book);
+    Single<BookResponse> editBook(EditBook book);
 }

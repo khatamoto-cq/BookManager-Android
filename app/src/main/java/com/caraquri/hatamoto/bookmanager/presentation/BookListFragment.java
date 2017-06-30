@@ -67,6 +67,12 @@ public class BookListFragment extends BaseFragment implements BookListContract.V
         super.onActivityCreated(savedInstanceState);
         App.getAppComponent(getActivity()).inject(this);
         bookListPresenter.attachView(this);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        bookAdapter.clear();
         bookListPresenter.load();
     }
 

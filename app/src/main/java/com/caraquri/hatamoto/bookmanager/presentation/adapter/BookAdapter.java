@@ -119,4 +119,8 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
             notifyItemInserted(position);
         }
     }
+
+    public void clear() {
+        books.clear();
+    }
 }
