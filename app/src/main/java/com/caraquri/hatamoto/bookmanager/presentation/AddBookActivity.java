@@ -121,17 +121,10 @@ public class AddBookActivity extends BaseActivity implements RegisterBookContrac
         }
     }
 
+    @Override
     public String getBase64EncordedImage() {
-        try {
-            BitmapDrawable drawable = (BitmapDrawable) imageView.getDrawable();
-            return ImageUtils.encodeBase64(drawable.getBitmap());
-        } catch (RuntimeException e) {
-            Timber.e(e.getMessage());
-        } catch (IOException e) {
-            Timber.e(e.getMessage());
-        }
-
-        return "";
+        BitmapDrawable bitmapDrawable = (BitmapDrawable) imageView.getDrawable();
+        return ImageUtils.getBase64EncordedImage(bitmapDrawable);
     }
 
     private void onSaveButtonClick() {

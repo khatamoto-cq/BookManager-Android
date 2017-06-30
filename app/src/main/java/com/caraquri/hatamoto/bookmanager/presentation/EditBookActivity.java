@@ -3,6 +3,7 @@ package com.caraquri.hatamoto.bookmanager.presentation;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
@@ -19,6 +20,7 @@ import com.caraquri.hatamoto.bookmanager.R;
 import com.caraquri.hatamoto.bookmanager.domain.entity.Book;
 import com.caraquri.hatamoto.bookmanager.presentation.contract.RegisterBookContract;
 import com.caraquri.hatamoto.bookmanager.util.BookActivityUtils;
+import com.caraquri.hatamoto.bookmanager.util.DateUtils;
 import com.caraquri.hatamoto.bookmanager.util.ImageUtils;
 
 import java.io.IOException;
@@ -129,7 +131,8 @@ public class EditBookActivity extends BaseActivity implements RegisterBookContra
 
     @Override
     public String getBase64EncordedImage() {
-        return null;
+        BitmapDrawable bitmapDrawable = (BitmapDrawable) imageView.getDrawable();
+        return ImageUtils.getBase64EncordedImage(bitmapDrawable);
     }
 
     private void onSaveButtonClick() {
@@ -151,7 +154,9 @@ public class EditBookActivity extends BaseActivity implements RegisterBookContra
         if (book.getPrice() > 0) {
             priceEditText.setText(String.valueOf(book.getPrice()));
         }
-        purchaseDateEditText.setText(book.getPurchaseDate());
+        if (!TextUtils.isEmpty(book.getPurchaseDate())) {
+            purchaseDateEditText.setText(DateUtils.getFormatedDate(book.getPurchaseDate()));
+        }
     }
 
     public static Intent createIntent(Context context, Book book) {

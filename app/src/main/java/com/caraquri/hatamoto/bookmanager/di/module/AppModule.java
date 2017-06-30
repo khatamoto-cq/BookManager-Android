@@ -71,8 +71,8 @@ public class AppModule {
     }
 
     @Provides
-    AccountSettingPresenter provideAccountSettingPresenter(Scheduler scheduler) {
-        return new AccountSettingPresenter(scheduler);
+    AccountSettingPresenter provideAccountSettingPresenter(Scheduler scheduler, AccountRepository accountRepository) {
+        return new AccountSettingPresenter(scheduler, accountRepository);
     }
 
     @Provides
@@ -86,8 +86,8 @@ public class AppModule {
     }
 
     @Provides
-    EditBookPresenter provideEditBookPresenter(Scheduler scheduler) {
-        return new EditBookPresenter(scheduler);
+    EditBookPresenter provideEditBookPresenter(Scheduler scheduler, BookRepository bookRepository) {
+        return new EditBookPresenter(scheduler, bookRepository);
     }
 
     @Provides

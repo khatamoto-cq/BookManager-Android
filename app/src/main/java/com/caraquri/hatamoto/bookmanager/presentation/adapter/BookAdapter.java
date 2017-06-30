@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.caraquri.hatamoto.bookmanager.R;
 import com.caraquri.hatamoto.bookmanager.domain.entity.Book;
+import com.caraquri.hatamoto.bookmanager.util.DateUtils;
 
 import org.threeten.bp.LocalDateTime;
 import org.threeten.bp.format.DateTimeFormatter;
@@ -67,13 +68,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
             }
 
             if (!TextUtils.isEmpty(book.getPurchaseDate())){
-                try {
-                    LocalDateTime dateTime = LocalDateTime.parse(book.getPurchaseDate(), DateTimeFormatter.RFC_1123_DATE_TIME);
-                    DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-                    holder.date.setText(dateTime.format(outputFormatter));
-                } catch (DateTimeParseException e) {
-                    Timber.e(e.getMessage());
-                }
+                holder.date.setText(DateUtils.getFormatedDate(book.getPurchaseDate()));
             }
         }
     }
