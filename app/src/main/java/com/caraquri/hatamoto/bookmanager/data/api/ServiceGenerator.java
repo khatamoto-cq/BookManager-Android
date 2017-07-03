@@ -17,51 +17,57 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ServiceGenerator {
-    private static Retrofit retrofit;
 
+    private static Retrofit retrofit;
     private static final String API_BASE_URL = BuildConfig.BASE_URL;
 
-    final static Gson gson = new GsonBuilder()
-            .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
-            .create();
-
-    private static Retrofit.Builder builer = new Retrofit.Builder();
-
-    private static OkHttpClient.Builder httpClient = new OkHttpClient.Builder()
-            .readTimeout(30, TimeUnit.SECONDS);
-
     public static <S> S create(Class<S> serviceClass) {
-        initHttpClient();
-        initBuilder();
-        retrofit = builer.build();
+
+        if (retrofit == null) {
+            OkHttpClient.Builder httpClient = getHttpClientBuilder();
+            Retrofit.Builder builder = getRetrofitBuilder(httpClient);
+            retrofit = builder.build();
+        }
 
         return retrofit.create(serviceClass);
     }
 
     public static <S> S create(Class<S> serviceClass, String requestToken) {
         if (!TextUtils.isEmpty(requestToken)) {
+            OkHttpClient.Builder httpClient = getHttpClientBuilder();
             httpClient.addInterceptor(new AuthenticationInterceptor(requestToken));
+            Retrofit.Builder builder = getRetrofitBuilder(httpClient);
+            retrofit = builder.build();
         }
-
-        initHttpClient();
-        initBuilder();
-        retrofit = builer.build();
 
         return retrofit.create(serviceClass);
     }
 
-    private static void initHttpClient() {
+    private static OkHttpClient.Builder getHttpClientBuilder() {
+        OkHttpClient.Builder httpClient = new OkHttpClient.Builder()
+                .readTimeout(30, TimeUnit.SECONDS);
         HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         httpClient.addInterceptor(loggingInterceptor);
         httpClient.addInterceptor(new JsonContentInterceptor());
         httpClient.addNetworkInterceptor(new StethoInterceptor());
+
+        return httpClient;
     }
 
-    private static void  initBuilder() {
-        builer.addConverterFactory(GsonConverterFactory.create(gson))
+    private static Retrofit.Builder getRetrofitBuilder(OkHttpClient.Builder httpClientBuilder) {
+        Retrofit.Builder retrofitBuilder = new Retrofit.Builder();
+        retrofitBuilder.addConverterFactory(GsonConverterFactory.create(getGson()))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .baseUrl(API_BASE_URL)
-                .client(httpClient.build());
+                .client(httpClientBuilder.build());
+        return retrofitBuilder;
+    }
+
+    private static Gson getGson() {
+        Gson gson = new GsonBuilder()
+                .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
+                .create();
+        return gson;
     }
 }
