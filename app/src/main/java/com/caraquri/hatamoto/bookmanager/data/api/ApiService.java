@@ -12,7 +12,6 @@ import io.reactivex.Single;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
-import retrofit2.http.Headers;
 import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
@@ -20,23 +19,18 @@ import retrofit2.http.Query;
 
 public interface ApiService {
 
-    @Headers( "Content-Type: application/json")
     @POST("login")
     Single<AccountResponse> login(@Body AccountRequest account);
 
-    @Headers( "Content-Type: application/json")
     @POST("signup")
     Single<AccountResponse> signup(@Body AccountRequest account);
 
-    @Headers( "Content-Type: application/json")
     @GET("books")
     Observable<BookResult> getBooks(@Header("Authorization") String token, @Query("user_id") int userId, @Query("page") String page);
 
-    @Headers( "Content-Type: application/json")
     @POST("books")
     Single<BookResponse> addBook(@Header("Authorization") String token, @Body AddBookRequest book);
 
-    @Headers( "Content-Type: application/json")
     @PATCH("books/{id}")
     Single<BookResponse> editBook(@Header("Authorization") String token, @Body EditBookRequest book, @Path("id") int id);
 }
