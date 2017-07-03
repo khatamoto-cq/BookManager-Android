@@ -24,6 +24,7 @@ import com.caraquri.hatamoto.bookmanager.util.DateUtils;
 import com.caraquri.hatamoto.bookmanager.util.ImageUtils;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.util.Calendar;
 import java.util.TimeZone;
 
@@ -143,7 +144,7 @@ public class EditBookActivity extends BaseActivity implements RegisterBookContra
             book.setPrice(Integer.parseInt(priceEditText.getText().toString()));
         }
         if (!TextUtils.isEmpty(purchaseDateEditText.getText().toString())) {
-            book.setPurchaseDate(DateUtils.getFormatedDate(purchaseDateEditText.getText().toString()));
+            book.setPurchaseDate(purchaseDateEditText.getText().toString());
         }
 
         editBookPresenter.save(book);
