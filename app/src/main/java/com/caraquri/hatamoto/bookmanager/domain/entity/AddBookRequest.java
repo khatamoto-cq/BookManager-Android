@@ -1,7 +1,5 @@
 package com.caraquri.hatamoto.bookmanager.domain.entity;
 
-import com.google.gson.annotations.Expose;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +9,7 @@ import lombok.ToString;
 @Setter
 @AllArgsConstructor
 @ToString
-public class EditBook {
-    @Expose
-    private int id;
+public class AddBookRequest {
 
     private String name;
 
@@ -23,8 +19,9 @@ public class EditBook {
 
     private String imageData;
 
-    public EditBook(Book book) {
-        this.id = book.getId();
+    private int userId;
+
+    public AddBookRequest(Book book) {
         this.name = book.getName();
         this.price = book.getPrice();
         this.purchaseDate = book.getPurchaseDate();

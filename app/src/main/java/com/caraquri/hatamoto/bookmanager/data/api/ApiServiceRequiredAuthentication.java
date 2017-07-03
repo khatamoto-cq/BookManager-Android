@@ -1,9 +1,9 @@
 package com.caraquri.hatamoto.bookmanager.data.api;
 
-import com.caraquri.hatamoto.bookmanager.domain.entity.AddBook;
+import com.caraquri.hatamoto.bookmanager.domain.entity.AddBookRequest;
 import com.caraquri.hatamoto.bookmanager.domain.entity.BookResponse;
 import com.caraquri.hatamoto.bookmanager.domain.entity.BookResult;
-import com.caraquri.hatamoto.bookmanager.domain.entity.EditBook;
+import com.caraquri.hatamoto.bookmanager.domain.entity.EditBookRequest;
 
 import io.reactivex.Observable;
 import io.reactivex.Single;
@@ -22,9 +22,9 @@ public interface ApiServiceRequiredAuthentication {
 
     @Headers( "Content-Type: application/json")
     @POST("books")
-    Single<BookResponse> addBook(@Body AddBook book);
+    Single<BookResponse> addBook(@Body AddBookRequest book);
 
     @Headers( "Content-Type: application/json")
     @PATCH("books/{id}")
-    Single<BookResponse> editBook(@Body EditBook book, @Path("id") int id);
+    Single<BookResponse> editBook(@Body EditBookRequest book, @Path("id") int id);
 }

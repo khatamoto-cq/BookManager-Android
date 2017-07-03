@@ -1,10 +1,10 @@
 package com.caraquri.hatamoto.bookmanager.data.repository;
 
 import com.caraquri.hatamoto.bookmanager.data.api.ApiServiceRequiredAuthentication;
-import com.caraquri.hatamoto.bookmanager.domain.entity.AddBook;
+import com.caraquri.hatamoto.bookmanager.domain.entity.AddBookRequest;
 import com.caraquri.hatamoto.bookmanager.domain.entity.BookResponse;
 import com.caraquri.hatamoto.bookmanager.domain.entity.BookResult;
-import com.caraquri.hatamoto.bookmanager.domain.entity.EditBook;
+import com.caraquri.hatamoto.bookmanager.domain.entity.EditBookRequest;
 import com.caraquri.hatamoto.bookmanager.domain.repository.BookRepository;
 
 import io.reactivex.Observable;
@@ -24,12 +24,12 @@ public class BookRepositoryImpl implements BookRepository {
     }
 
     @Override
-    public Single<BookResponse> addBook(AddBook book) {
+    public Single<BookResponse> addBook(AddBookRequest book) {
         return service.addBook(book);
     }
 
     @Override
-    public Single<BookResponse> editBook(EditBook book) {
+    public Single<BookResponse> editBook(EditBookRequest book) {
         return service.editBook(book, book.getId());
     }
 }

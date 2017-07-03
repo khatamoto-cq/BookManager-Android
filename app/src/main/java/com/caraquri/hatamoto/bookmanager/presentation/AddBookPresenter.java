@@ -3,7 +3,7 @@ package com.caraquri.hatamoto.bookmanager.presentation;
 import android.text.TextUtils;
 
 import com.caraquri.hatamoto.bookmanager.R;
-import com.caraquri.hatamoto.bookmanager.domain.entity.AddBook;
+import com.caraquri.hatamoto.bookmanager.domain.entity.AddBookRequest;
 import com.caraquri.hatamoto.bookmanager.domain.entity.Book;
 import com.caraquri.hatamoto.bookmanager.domain.entity.BookResponse;
 import com.caraquri.hatamoto.bookmanager.domain.repository.BookRepository;
@@ -46,7 +46,7 @@ public class AddBookPresenter extends BasePresenter<RegisterBookContract.View> i
             return;
         }
 
-        AddBook addBook = new AddBook(book);
+        AddBookRequest addBook = new AddBookRequest(book);
         addBook.setImageData(getView().getBase64EncordedImage());
         addBook.setUserId(AuthenticationUtils.getLoginUserId(getView().getContext()));
 

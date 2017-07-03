@@ -3,7 +3,7 @@ package com.caraquri.hatamoto.bookmanager.presentation;
 import android.text.TextUtils;
 
 import com.caraquri.hatamoto.bookmanager.R;
-import com.caraquri.hatamoto.bookmanager.domain.entity.Account;
+import com.caraquri.hatamoto.bookmanager.domain.entity.AccountRequest;
 import com.caraquri.hatamoto.bookmanager.domain.entity.AccountResponse;
 import com.caraquri.hatamoto.bookmanager.domain.repository.AccountRepository;
 import com.caraquri.hatamoto.bookmanager.presentation.contract.AccountSettingContract;
@@ -38,7 +38,7 @@ public class AccountSettingPresenter extends BasePresenter<AccountSettingContrac
             return;
         }
 
-        accountRepository.create(new Account(email, password))
+        accountRepository.create(new AccountRequest(email, password))
                 .subscribeOn(scheduler)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<AccountResponse>() {

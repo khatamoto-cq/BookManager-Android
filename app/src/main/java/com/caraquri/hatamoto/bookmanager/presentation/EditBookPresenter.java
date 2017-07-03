@@ -5,7 +5,7 @@ import android.text.TextUtils;
 import com.caraquri.hatamoto.bookmanager.R;
 import com.caraquri.hatamoto.bookmanager.domain.entity.Book;
 import com.caraquri.hatamoto.bookmanager.domain.entity.BookResponse;
-import com.caraquri.hatamoto.bookmanager.domain.entity.EditBook;
+import com.caraquri.hatamoto.bookmanager.domain.entity.EditBookRequest;
 import com.caraquri.hatamoto.bookmanager.domain.repository.BookRepository;
 import com.caraquri.hatamoto.bookmanager.presentation.contract.RegisterBookContract;
 import com.caraquri.hatamoto.bookmanager.presentation.validator.BookValidator;
@@ -43,7 +43,7 @@ public class EditBookPresenter extends BasePresenter<RegisterBookContract.View> 
             return;
         }
 
-        EditBook editBook = new EditBook(book);
+        EditBookRequest editBook = new EditBookRequest(book);
         editBook.setImageData(getView().getBase64EncordedImage());
 
         bookRepository.editBook(editBook)

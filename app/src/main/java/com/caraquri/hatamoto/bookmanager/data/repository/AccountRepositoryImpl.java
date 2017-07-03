@@ -1,7 +1,7 @@
 package com.caraquri.hatamoto.bookmanager.data.repository;
 
 import com.caraquri.hatamoto.bookmanager.data.api.ApiService;
-import com.caraquri.hatamoto.bookmanager.domain.entity.Account;
+import com.caraquri.hatamoto.bookmanager.domain.entity.AccountRequest;
 import com.caraquri.hatamoto.bookmanager.domain.entity.AccountResponse;
 import com.caraquri.hatamoto.bookmanager.domain.repository.AccountRepository;
 
@@ -18,12 +18,12 @@ public class AccountRepositoryImpl implements AccountRepository {
     }
 
     @Override
-    public Single<AccountResponse> login(Account account) {
+    public Single<AccountResponse> login(AccountRequest account) {
         return service.login(account);
     }
 
     @Override
-    public Single<AccountResponse> create(Account account) {
+    public Single<AccountResponse> create(AccountRequest account) {
         return service.signup(account);
     }
 }
