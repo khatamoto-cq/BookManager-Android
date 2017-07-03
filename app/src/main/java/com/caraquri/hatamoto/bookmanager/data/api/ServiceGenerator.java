@@ -19,7 +19,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ServiceGenerator {
     private static Retrofit retrofit;
 
-    public static final String apiBaseUrl = BuildConfig.BASE_URL;
+    private static final String API_BASE_URL = BuildConfig.BASE_URL;
 
     final static Gson gson = new GsonBuilder()
             .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
@@ -61,7 +61,7 @@ public class ServiceGenerator {
     private static void  initBuilder() {
         builer.addConverterFactory(GsonConverterFactory.create(gson))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .baseUrl(apiBaseUrl)
+                .baseUrl(API_BASE_URL)
                 .client(httpClient.build());
     }
 }
