@@ -16,16 +16,15 @@ android {
         versionCode versionMajor * 10000 + versionMinor * 100 + versionPatch
         versionName "${versionMajor}.${versionMinor}.${versionPatch}"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        buildConfigField 'String', 'BASE_URL', '"http://54.238.252.116/"'
     }
 
     buildTypes {
         debug {
-            buildConfigField 'String', 'BASE_URL', '"http://54.238.252.116/"'
             testCoverageEnabled = true
         }
         release {
             minifyEnabled false
-            buildConfigField 'String', 'BASE_URL', '"http://54.238.252.116/"'
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
