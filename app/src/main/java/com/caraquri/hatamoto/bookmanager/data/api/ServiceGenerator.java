@@ -54,6 +54,7 @@ public class ServiceGenerator {
         HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         httpClient.addInterceptor(loggingInterceptor);
+        httpClient.addInterceptor(new JsonContentInterceptor());
         httpClient.addNetworkInterceptor(new StethoInterceptor());
     }
 
