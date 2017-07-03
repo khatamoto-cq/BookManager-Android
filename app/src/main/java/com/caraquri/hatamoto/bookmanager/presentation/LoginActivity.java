@@ -1,5 +1,7 @@
 package com.caraquri.hatamoto.bookmanager.presentation;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.widget.EditText;
@@ -44,6 +46,16 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     @Override
     public void moveToBookList() {
         startActivity(MainActivity.class);
+    }
+
+    @Override
+    public void saveAccessTokenAndUserId(String requestToken, int userId) {
+        SharedPreferences sharedPreferences = getSharedPreferences(
+                getString(R.string.shared_prefference), Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(getString(R.string.request_token), requestToken);
+        editor.putInt(getString(R.string.user_id), userId);
+        editor.apply();
     }
 
     @OnClick(R.id.login_button)

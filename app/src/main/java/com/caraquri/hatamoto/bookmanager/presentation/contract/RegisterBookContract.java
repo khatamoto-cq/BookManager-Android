@@ -12,6 +12,10 @@ public interface RegisterBookContract {
         void showDialog(String title, String message);
 
         Context getContext();
+
+        String getBase64EncordedImage();
+
+        String getRequestToken();
     }
 
     interface Action {

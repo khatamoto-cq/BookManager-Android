@@ -18,6 +18,10 @@ public interface BookListContract {
         void set(List<Book> books);
 
         Context getContext();
+
+        String getRequestToken();
+
+        int getLoginUserId();
     }
 
     interface Action {

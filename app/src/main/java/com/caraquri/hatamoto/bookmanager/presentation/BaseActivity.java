@@ -2,11 +2,13 @@ package com.caraquri.hatamoto.bookmanager.presentation;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 
+import com.caraquri.hatamoto.bookmanager.R;
 import com.kaopiz.kprogresshud.KProgressHUD;
 
 import butterknife.ButterKnife;
@@ -16,6 +18,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     public static final int RESULT_PICK_IMAGEFILE = 101;
 
     protected KProgressHUD mProgress;
+
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -29,6 +33,9 @@ public abstract class BaseActivity extends AppCompatActivity {
                 .setCancellable(true)
                 .setAnimationSpeed(2)
                 .setDimAmount(0.5f);
+
+        sharedPreferences = getSharedPreferences(
+                getString(R.string.shared_prefference), Context.MODE_PRIVATE);
 
         init(savedInstanceState);
     }

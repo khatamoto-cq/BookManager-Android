@@ -2,6 +2,7 @@ package com.caraquri.hatamoto.bookmanager.presentation;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
@@ -16,6 +17,7 @@ import com.caraquri.hatamoto.bookmanager.App;
 import com.caraquri.hatamoto.bookmanager.R;
 import com.caraquri.hatamoto.bookmanager.domain.entity.Book;
 import com.caraquri.hatamoto.bookmanager.presentation.contract.RegisterBookContract;
+import com.caraquri.hatamoto.bookmanager.util.AuthenticationUtils;
 import com.caraquri.hatamoto.bookmanager.util.BookActivityUtils;
 import com.caraquri.hatamoto.bookmanager.util.ImageUtils;
 
@@ -118,6 +120,17 @@ public class AddBookActivity extends BaseActivity implements RegisterBookContrac
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    public String getRequestToken() {
+        return AuthenticationUtils.getRequestToken(this);
+    }
+
+    @Override
+    public String getBase64EncordedImage() {
+        BitmapDrawable bitmapDrawable = (BitmapDrawable) imageView.getDrawable();
+        return ImageUtils.getBase64EncordedImage(bitmapDrawable);
     }
 
     private void onSaveButtonClick() {

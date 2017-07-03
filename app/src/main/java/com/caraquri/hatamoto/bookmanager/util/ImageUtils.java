@@ -2,14 +2,19 @@ package com.caraquri.hatamoto.bookmanager.util;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.ParcelFileDescriptor;
+import android.util.Base64;
 
 import com.caraquri.hatamoto.bookmanager.presentation.BaseActivity;
 
+import java.io.ByteArrayOutputStream;
 import java.io.FileDescriptor;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+
+import timber.log.Timber;
 
 public class ImageUtils {
     public static Bitmap getBitmapFromUri(BaseActivity activity, Uri uri) throws IOException {
@@ -30,5 +35,34 @@ public class ImageUtils {
                 }
             }
         }
+    }
+
+    public static String getBase64EncordedImage(BitmapDrawable bitmapDrawable) {
+        if (bitmapDrawable == null) {
+            return "";
+        }
+
+        ByteArrayOutputStream stream = null;
+
+        try {
+            stream = new ByteArrayOutputStream();
+            Bitmap bitmap = bitmapDrawable.getBitmap();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+            byte[] bytes = stream.toByteArray();
+
+            return Base64.encodeToString(bytes, Base64.DEFAULT);
+        } catch (RuntimeException e) {
+            Timber.e(e.getMessage());
+        } finally {
+            if (stream != null) {
+                try {
+                    stream.close();
+                } catch (IOException e) {
+                    Timber.e(e.getMessage());
+                }
+            }
+        }
+
+        return "";
     }
 }

@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.caraquri.hatamoto.bookmanager.R;
 import com.caraquri.hatamoto.bookmanager.domain.entity.Book;
+import com.caraquri.hatamoto.bookmanager.util.DateUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,11 +55,16 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
             if (!TextUtils.isEmpty(book.getImageUrl())) {
                 Glide.with(context).load(book.getImageUrl()).into(holder.imageView);
             }
+
             holder.name.setText(book.getName());
+
             if (book.getPrice() > 0) {
                 holder.price.setText(context.getString(R.string.text_book_price, book.getPrice()));
             }
-            holder.date.setText(book.getPurchaseDate());
+
+            if (!TextUtils.isEmpty(book.getPurchaseDate())){
+                holder.date.setText(DateUtils.getFormatedDate(book.getPurchaseDate()));
+            }
         }
     }
 
@@ -102,5 +108,9 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
             books.add(book);
             notifyItemInserted(position);
         }
+    }
+
+    public void clear() {
+        books.clear();
     }
 }

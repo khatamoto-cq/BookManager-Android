@@ -3,6 +3,7 @@ package com.caraquri.hatamoto.bookmanager.presentation;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
@@ -18,7 +19,9 @@ import com.caraquri.hatamoto.bookmanager.App;
 import com.caraquri.hatamoto.bookmanager.R;
 import com.caraquri.hatamoto.bookmanager.domain.entity.Book;
 import com.caraquri.hatamoto.bookmanager.presentation.contract.RegisterBookContract;
+import com.caraquri.hatamoto.bookmanager.util.AuthenticationUtils;
 import com.caraquri.hatamoto.bookmanager.util.BookActivityUtils;
+import com.caraquri.hatamoto.bookmanager.util.DateUtils;
 import com.caraquri.hatamoto.bookmanager.util.ImageUtils;
 
 import java.io.IOException;
@@ -50,6 +53,8 @@ public class EditBookActivity extends BaseActivity implements RegisterBookContra
     @Inject
     EditBookPresenter editBookPresenter;
 
+    private Book book;
+
     @Override
     protected void init(@Nullable Bundle savedInstanceState) {
         super.init(savedInstanceState);
@@ -58,7 +63,7 @@ public class EditBookActivity extends BaseActivity implements RegisterBookContra
         toolbar.setTitle(R.string.title_edit_book);
         BookActivityUtils.buildToolbar(this, toolbar);
 
-        Book book = getIntent().getParcelableExtra(EXTRA_BOOK);
+        book = getIntent().getParcelableExtra(EXTRA_BOOK);
         initControls(book);
 
         attachButton.setOnClickListener(view -> {
@@ -127,15 +132,27 @@ public class EditBookActivity extends BaseActivity implements RegisterBookContra
         }
     }
 
-    private void onSaveButtonClick() {
-        String name = nameEditTest.getText().toString();
-        int price = 0;
-        if (!TextUtils.isEmpty(priceEditText.getText().toString())) {
-            price = Integer.parseInt(priceEditText.getText().toString());
-        }
-        String purchaseDate = purchaseDateEditText.getText().toString();
+    @Override
+    public String getBase64EncordedImage() {
+        BitmapDrawable bitmapDrawable = (BitmapDrawable) imageView.getDrawable();
+        return ImageUtils.getBase64EncordedImage(bitmapDrawable);
+    }
 
-        editBookPresenter.save(new Book(name, price, purchaseDate));
+    private void onSaveButtonClick() {
+        book.setName(nameEditTest.getText().toString());
+        if (!TextUtils.isEmpty(priceEditText.getText().toString())) {
+            book.setPrice(Integer.parseInt(priceEditText.getText().toString()));
+        }
+        if (!TextUtils.isEmpty(purchaseDateEditText.getText().toString())) {
+            book.setPurchaseDate(purchaseDateEditText.getText().toString());
+        }
+
+        editBookPresenter.save(book);
+    }
+
+    @Override
+    public String getRequestToken() {
+        return AuthenticationUtils.getRequestToken(this);
     }
 
     private void initControls(Book book) {
@@ -146,7 +163,9 @@ public class EditBookActivity extends BaseActivity implements RegisterBookContra
         if (book.getPrice() > 0) {
             priceEditText.setText(String.valueOf(book.getPrice()));
         }
-        purchaseDateEditText.setText(book.getPurchaseDate());
+        if (!TextUtils.isEmpty(book.getPurchaseDate())) {
+            purchaseDateEditText.setText(DateUtils.getFormatedDate(book.getPurchaseDate()));
+        }
     }
 
     public static Intent createIntent(Context context, Book book) {

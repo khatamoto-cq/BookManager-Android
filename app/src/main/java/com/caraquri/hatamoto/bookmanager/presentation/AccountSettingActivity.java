@@ -75,6 +75,16 @@ public class AccountSettingActivity extends BaseActivity implements AccountSetti
     }
 
     @Override
+    public void saveAccessTokenAndUserId(String requestToken, int userId) {
+        SharedPreferences sharedPreferences = getSharedPreferences(
+                getString(R.string.shared_prefference), Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(getString(R.string.request_token), requestToken);
+        editor.putInt(getString(R.string.user_id), userId);
+        editor.apply();
+    }
+
+    @Override
     public void moveToBookList() {
         startActivity(MainActivity.createIntent(this, MainActivity.BOOK_LIST_FRAGMENT));
         finish();

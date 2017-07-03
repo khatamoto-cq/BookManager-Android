@@ -6,15 +6,21 @@ import android.os.Parcelable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
 @AllArgsConstructor
+@ToString
 public class Book implements Parcelable {
     private int id;
+
     private String imageUrl;
+
     private String name;
+
     private int price;
+
     private String purchaseDate;
 
     public Book(String name, int price, String purchaseDate) {

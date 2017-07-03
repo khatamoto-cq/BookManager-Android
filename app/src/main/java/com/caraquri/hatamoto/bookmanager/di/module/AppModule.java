@@ -3,7 +3,11 @@ package com.caraquri.hatamoto.bookmanager.di.module;
 import android.app.Application;
 import android.content.Context;
 
+import com.caraquri.hatamoto.bookmanager.data.api.ApiService;
+import com.caraquri.hatamoto.bookmanager.data.api.ServiceGenerator;
+import com.caraquri.hatamoto.bookmanager.data.repository.AccountRepositoryImpl;
 import com.caraquri.hatamoto.bookmanager.data.repository.BookRepositoryImpl;
+import com.caraquri.hatamoto.bookmanager.domain.repository.AccountRepository;
 import com.caraquri.hatamoto.bookmanager.domain.repository.BookRepository;
 import com.caraquri.hatamoto.bookmanager.presentation.AccountSettingPresenter;
 import com.caraquri.hatamoto.bookmanager.presentation.AddBookPresenter;
@@ -39,8 +43,18 @@ public class AppModule {
     }
 
     @Provides
-    BookRepository provideBookRepository() {
-        return new BookRepositoryImpl();
+    public ApiService provideApiService() {
+        return ServiceGenerator.create(ApiService.class);
+    }
+
+    @Provides
+    AccountRepository provideAccountRepository(ApiService service) {
+        return new AccountRepositoryImpl(service);
+    }
+
+    @Provides
+    BookRepository provideBookRepository(ApiService service) {
+        return new BookRepositoryImpl(service);
     }
 
     @Provides
@@ -49,23 +63,23 @@ public class AppModule {
     }
 
     @Provides
-    AccountSettingPresenter provideAccountSettingPresenter(Scheduler scheduler) {
-        return new AccountSettingPresenter(scheduler);
+    AccountSettingPresenter provideAccountSettingPresenter(Scheduler scheduler, AccountRepository accountRepository) {
+        return new AccountSettingPresenter(scheduler, accountRepository);
     }
 
     @Provides
-    LoginPresenter provideLoginPresenter(Scheduler scheduler) {
-        return new LoginPresenter(scheduler);
+    LoginPresenter provideLoginPresenter(Scheduler scheduler, AccountRepository accountRepository) {
+        return new LoginPresenter(scheduler, accountRepository);
     }
 
     @Provides
-    AddBookPresenter provideAddBookPresenter(Scheduler scheduler) {
-        return new AddBookPresenter(scheduler);
+    AddBookPresenter provideAddBookPresenter(Scheduler scheduler, BookRepository bookRepository) {
+        return new AddBookPresenter(scheduler, bookRepository);
     }
 
     @Provides
-    EditBookPresenter provideEditBookPresenter(Scheduler scheduler) {
-        return new EditBookPresenter(scheduler);
+    EditBookPresenter provideEditBookPresenter(Scheduler scheduler, BookRepository bookRepository) {
+        return new EditBookPresenter(scheduler, bookRepository);
     }
 
     @Provides

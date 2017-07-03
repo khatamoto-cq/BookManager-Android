@@ -13,6 +13,7 @@ import com.caraquri.hatamoto.bookmanager.R;
 import com.caraquri.hatamoto.bookmanager.domain.entity.Book;
 import com.caraquri.hatamoto.bookmanager.presentation.adapter.BookAdapter;
 import com.caraquri.hatamoto.bookmanager.presentation.contract.BookListContract;
+import com.caraquri.hatamoto.bookmanager.util.AuthenticationUtils;
 
 import java.util.List;
 
@@ -66,6 +67,12 @@ public class BookListFragment extends BaseFragment implements BookListContract.V
         super.onActivityCreated(savedInstanceState);
         App.getAppComponent(getActivity()).inject(this);
         bookListPresenter.attachView(this);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        bookAdapter.clear();
         bookListPresenter.load();
     }
 
@@ -92,5 +99,15 @@ public class BookListFragment extends BaseFragment implements BookListContract.V
     @Override
     public void set(List<Book> books) {
         bookAdapter.set(books);
+    }
+
+    @Override
+    public String getRequestToken() {
+        return AuthenticationUtils.getRequestToken(getActivity());
+    }
+
+    @Override
+    public int getLoginUserId() {
+        return AuthenticationUtils.getLoginUserId(getActivity());
     }
 }
