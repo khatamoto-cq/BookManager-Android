@@ -1,8 +1,6 @@
 package com.caraquri.hatamoto.bookmanager.data.api;
 
-import android.text.Editable;
 import android.text.TextUtils;
-import android.view.animation.Interpolator;
 
 import com.caraquri.hatamoto.bookmanager.BuildConfig;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
@@ -13,7 +11,6 @@ import com.google.gson.GsonBuilder;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import okhttp3.Call;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
