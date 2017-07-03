@@ -46,7 +46,7 @@ public class EditBookPresenter extends BasePresenter<RegisterBookContract.View> 
         EditBookRequest editBook = new EditBookRequest(book);
         editBook.setImageData(getView().getBase64EncordedImage());
 
-        bookRepository.editBook(editBook)
+        bookRepository.editBook(getView().getRequestToken(), editBook)
                 .subscribeOn(scheduler)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<BookResponse>() {

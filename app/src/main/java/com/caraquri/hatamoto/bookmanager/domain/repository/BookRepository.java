@@ -9,9 +9,9 @@ import io.reactivex.Observable;
 import io.reactivex.Single;
 
 public interface BookRepository {
-    Observable<BookResult> getBooks(int userId, String page);
+    Observable<BookResult> getBooks(String token, int userId, String page);
 
-    Single<BookResponse> addBook(AddBookRequest book);
+    Single<BookResponse> addBook(String token, AddBookRequest book);
 
-    Single<BookResponse> editBook(EditBookRequest book);
+    Single<BookResponse> editBook(String token, EditBookRequest book);
 }

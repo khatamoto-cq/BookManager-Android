@@ -1,17 +1,13 @@
 package com.caraquri.hatamoto.bookmanager.data.api;
 
-import android.text.TextUtils;
-
 import com.caraquri.hatamoto.bookmanager.BuildConfig;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -21,27 +17,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ServiceGenerator {
 
     private static Retrofit retrofit;
-    private static OkHttpClient.Builder httpClient;
-    private static AuthenticationInterceptor authenticationInterceptor;
     private static final String API_BASE_URL = BuildConfig.BASE_URL;
 
     public static <S> S create(Class<S> serviceClass) {
         if (retrofit == null) {
-            httpClient = getHttpClientBuilder();
-            Retrofit.Builder builder = getRetrofitBuilder(httpClient);
-            retrofit = builder.build();
-        }
-
-        return retrofit.create(serviceClass);
-    }
-
-    public static <S> S create(Class<S> serviceClass, String requestToken) {
-        List<Interceptor> interceptors = httpClient.interceptors();
-
-        if (!TextUtils.isEmpty(requestToken) && (retrofit == null || !interceptors.contains(authenticationInterceptor))) {
-            authenticationInterceptor = new AuthenticationInterceptor(requestToken);
-            httpClient = getHttpClientBuilder();
-            httpClient.addInterceptor(authenticationInterceptor);
+            OkHttpClient.Builder httpClient = getHttpClientBuilder();
             Retrofit.Builder builder = getRetrofitBuilder(httpClient);
             retrofit = builder.build();
         }

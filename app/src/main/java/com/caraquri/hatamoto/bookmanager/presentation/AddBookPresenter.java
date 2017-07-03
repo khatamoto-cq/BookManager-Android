@@ -50,7 +50,7 @@ public class AddBookPresenter extends BasePresenter<RegisterBookContract.View> i
         addBook.setImageData(getView().getBase64EncordedImage());
         addBook.setUserId(AuthenticationUtils.getLoginUserId(getView().getContext()));
 
-        bookRepository.addBook(addBook)
+        bookRepository.addBook(getView().getRequestToken(), addBook)
                 .subscribeOn(scheduler)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<BookResponse>() {

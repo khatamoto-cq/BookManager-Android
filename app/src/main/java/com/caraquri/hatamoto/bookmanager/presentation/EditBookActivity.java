@@ -19,12 +19,12 @@ import com.caraquri.hatamoto.bookmanager.App;
 import com.caraquri.hatamoto.bookmanager.R;
 import com.caraquri.hatamoto.bookmanager.domain.entity.Book;
 import com.caraquri.hatamoto.bookmanager.presentation.contract.RegisterBookContract;
+import com.caraquri.hatamoto.bookmanager.util.AuthenticationUtils;
 import com.caraquri.hatamoto.bookmanager.util.BookActivityUtils;
 import com.caraquri.hatamoto.bookmanager.util.DateUtils;
 import com.caraquri.hatamoto.bookmanager.util.ImageUtils;
 
 import java.io.IOException;
-import java.sql.Date;
 import java.util.Calendar;
 import java.util.TimeZone;
 
@@ -148,6 +148,11 @@ public class EditBookActivity extends BaseActivity implements RegisterBookContra
         }
 
         editBookPresenter.save(book);
+    }
+
+    @Override
+    public String getRequestToken() {
+        return AuthenticationUtils.getRequestToken(this);
     }
 
     private void initControls(Book book) {

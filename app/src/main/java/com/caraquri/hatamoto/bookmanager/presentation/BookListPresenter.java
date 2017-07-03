@@ -26,7 +26,7 @@ public class BookListPresenter extends BasePresenter<BookListContract.View> impl
     public void load() {
         getView().showProgress();
 
-        bookRepository.getBooks(getView().getLoginUserId(), "0-200")
+        bookRepository.getBooks(getView().getRequestToken(), getView().getLoginUserId(), "0-200")
                 .subscribeOn(scheduler)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<BookResult>() {

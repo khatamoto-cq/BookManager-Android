@@ -14,6 +14,8 @@ public interface RegisterBookContract {
         Context getContext();
 
         String getBase64EncordedImage();
+
+        String getRequestToken();
     }
 
     interface Action {
