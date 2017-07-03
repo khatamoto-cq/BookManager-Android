@@ -3,8 +3,6 @@ package com.caraquri.hatamoto.bookmanager.domain.entity;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.google.gson.annotations.SerializedName;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,14 +15,12 @@ import lombok.ToString;
 public class Book implements Parcelable {
     private int id;
 
-    @SerializedName("image_url")
     private String imageUrl;
 
     private String name;
 
     private int price;
 
-    @SerializedName("purchase_date")
     private String purchaseDate;
 
     public Book(String name, int price, String purchaseDate) {

@@ -1,7 +1,6 @@
 package com.caraquri.hatamoto.bookmanager.domain.entity;
 
 import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,10 +19,8 @@ public class EditBook {
 
     private int price;
 
-    @SerializedName("purchase_date")
     private String purchaseDate;
 
-    @SerializedName("image_data")
     private String imageData;
 
     public EditBook(Book book) {
